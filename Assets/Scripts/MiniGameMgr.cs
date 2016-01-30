@@ -26,6 +26,8 @@ public class MiniGameMgr : MonoBehaviour {
    bool lastGameUnloaded = true;
    bool betweenSequenceFinished;
 
+   bool oneGameMode;
+
    float currentSpeed = 1;
    public float endingSpeed = 3;
    public float increment = .2f;
@@ -43,6 +45,13 @@ public class MiniGameMgr : MonoBehaviour {
 
    void Start()
    {
+      string minigameToTest = PlayerPrefs.GetString("minigame_to_test");
+      if (minigameToTest != "")
+      {
+         PlayerPrefs.SetString("minigame_to_test", "");
+         currentMinigameName = minigameToTest;
+         oneGameMode = true;
+      }
       LoadingMgr.Instance.OnSceneLoaded += Instance_OnSceneLoaded;
       LoadingMgr.Instance.OnSceneUnloaded += Instance_OnSceneUnloaded;
       loadingDoors.OnDoorsOpened += Instance_OnDoorsOpened;
@@ -121,6 +130,11 @@ public class MiniGameMgr : MonoBehaviour {
 
    void ChooseMinigame()
    {
+      if (oneGameMode)
+      {
+         return;
+      }
+
       ++currentMinigameIndex;
       int numberInStage = miniGames[currentLifestageIndex].minigames.Length;
       if (currentMinigameIndex < numberInStage)
