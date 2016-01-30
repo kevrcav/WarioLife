@@ -371,8 +371,8 @@ MonoBehaviour:
   handAnim: {fileID: 556662047}
   headAnim: {fileID: 1996644000}
   bodyAnim: {fileID: 145020379}
-  maxAnchorY: 1.5
-  minAnchorY: -1.5
+  anchorToHeadMaxDelta: 1.8
+  headYOffset: -0.25
 --- !u!4 &1382310122 stripped
 Transform:
   m_PrefabParentObject: {fileID: 441452, guid: e2963ae6026a74d41a36ef664aed690c, type: 2}

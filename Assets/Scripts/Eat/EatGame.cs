@@ -15,8 +15,8 @@ public class EatGame : MonoBehaviour {
     public Animator handAnim;
     public Animator headAnim;
     public Animator bodyAnim;
-    public float maxAnchorY = 0;
-    public float minAnchorY = 0;
+    public float anchorToHeadMaxDelta = 1.5f;
+    public float headYOffset = -0.5f;
     MiniGame miniGame;
 
 	// Use this for initialization
@@ -83,8 +83,13 @@ public class EatGame : MonoBehaviour {
     void ResolveAction()
     {
         //Debug.Log("WOO LET'S RESOLVE THIS ACTION");
-        float anchor_y = anchorAnim.transform.localPosition.y;
-        if (anchor_y < minAnchorY)
+        float anchor_y = anchorAnim.transform.position.y;
+        float head_y = headAnim.transform.position.y + headYOffset;
+        float y_delta = anchor_y - head_y;
+
+        Debug.Log("Delta is " + y_delta.ToString());
+
+        if (y_delta < 0 - anchorToHeadMaxDelta)
         {
             handAnim.SetTrigger("result_too_low");
             anchorAnim.Stop();
@@ -92,7 +97,7 @@ public class EatGame : MonoBehaviour {
             bodyAnim.SetTrigger("result_fail_01");
             miniGame.ReportLose();
         }
-        else if (anchor_y > maxAnchorY)
+        else if (y_delta > anchorToHeadMaxDelta)
         {
             handAnim.SetTrigger("result_too_high");
             anchorAnim.Stop();
