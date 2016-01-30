@@ -1,11 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Xml;
 
 [System.Serializable]
 public struct LifeStage
 {
    public Stage stage;
    public int numRepeats;
+   public float speedStart;
+   public float speedEnd;
    public string[] minigames;
 } 
 
@@ -23,6 +27,7 @@ public class MiniGameMgr : MonoBehaviour {
    public static MiniGameMgr Instance;
 
    public LoadingDoors loadingDoors;
+   public string currentConfigName;
    public LifeStage[] miniGames;
    Stage currentLifeStage = Stage.kBaby;
    int currentMinigameIndex;
@@ -32,6 +37,9 @@ public class MiniGameMgr : MonoBehaviour {
    bool nextGameLoaded;
    bool lastGameUnloaded = true;
    bool betweenSequenceFinished;
+
+   public TextAsset configData;
+   Dictionary<string, LifeStage[]> minigameSets;
 
    bool oneGameMode;
 
@@ -53,6 +61,10 @@ public class MiniGameMgr : MonoBehaviour {
 
    void Start()
    {
+      LoadMinigameConfig();
+
+      miniGames = minigameSets[currentConfigName];
+
       string minigameToTest = PlayerPrefs.GetString("minigame_to_test");
       if (minigameToTest != "")
       {
@@ -71,6 +83,58 @@ public class MiniGameMgr : MonoBehaviour {
       LoadingMgr.Instance.LoadScene(currentMinigameName);
       StartCoroutine(MiniGameBridge());
       HUDMgr.Instance.message.text = "Get Ready!";
+   }
+
+   void LoadMinigameConfig()
+   {
+      XmlDocument configs = new XmlDocument();
+      configs.LoadXml(configData.text);
+
+      minigameSets = new Dictionary<string, LifeStage[]>();
+
+      foreach (XmlNode config in configs.ChildNodes)
+      {
+         List<LifeStage> stages = new List<LifeStage>();
+         foreach (XmlNode stageNode in config.ChildNodes)
+         {
+            Stage lifeStage = GetLifeStageFromNode(stageNode);
+            XmlNode speedNode = stageNode.SelectSingleNode("Speeds");
+            float startSpeed = float.Parse(speedNode.SelectSingleNode("Start").InnerText);
+            float endSpeed = float.Parse(speedNode.SelectSingleNode("End").InnerText);
+            int numRepeats = int.Parse(stageNode.SelectSingleNode("Repeats").InnerText);
+            List<string> minigameNames = new List<string>();
+            foreach (XmlNode minigameNode in stageNode.SelectSingleNode("Minigames"))
+            {
+               minigameNames.Add(minigameNode.Name);
+            }
+            LifeStage newLifeStage;
+            newLifeStage.minigames = minigameNames.ToArray();
+            newLifeStage.numRepeats = numRepeats;
+            newLifeStage.speedStart = startSpeed;
+            newLifeStage.speedEnd = endSpeed;
+            newLifeStage.stage = lifeStage;
+            stages.Add(newLifeStage);
+         }
+         minigameSets[config.Name] = stages.ToArray();
+      }
+   }
+
+   Stage GetLifeStageFromNode(XmlNode stageNode)
+   {
+      switch (stageNode.Name)
+      {
+         case "Baby":
+            return Stage.kBaby;
+         case "Youth":
+            return Stage.kYouth;
+         case "Hipster":
+            return Stage.kHipster;
+         case "Grownup":
+            return Stage.kGrownUp;
+         case "Decrepit":
+            return Stage.kDecrepit;
+      }
+      return Stage.kBaby;
    }
 
    void Instance_OnSceneLoaded(MiniGame minigame)

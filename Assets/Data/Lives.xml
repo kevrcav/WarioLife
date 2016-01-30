@@ -1,0 +1,52 @@
+<TestLife>
+   <Baby>
+      <Speeds>
+         <Start>1</Start>
+         <End>2</End>
+      </Speeds>
+      <Repeats>2</Repeats>
+      <Minigames>
+         <test_minigame />
+      </Minigames>
+   </Baby>
+   <Youth>
+      <Speeds>
+         <Start>1</Start>
+         <End>2</End>
+      </Speeds>
+      <Repeats>2</Repeats>
+      <Minigames>
+         <eat_minigame />
+      </Minigames>
+   </Youth>
+   <Hipster>
+      <Speeds>
+         <Start>1</Start>
+         <End>2</End>
+      </Speeds>
+      <Repeats>2</Repeats>
+      <Minigames>
+         <friend_minigame />
+      </Minigames>
+   </Hipster>
+   <Grownup>
+      <Speeds>
+         <Start>1</Start>
+         <End>2</End>
+      </Speeds>
+      <Repeats>2</Repeats>
+      <Minigames>
+         <eat_minigame />
+      </Minigames>
+   </Grownup>
+   <Decrepit>
+      <Speeds>
+         <Start>1</Start>
+         <End>2</End>
+      </Speeds>
+      <Repeats>2</Repeats>
+      <Minigames>
+         <test_minigame />
+      </Minigames>
+   </Decrepit>
+</TestLife>
