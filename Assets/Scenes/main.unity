@@ -191,6 +191,7 @@ MonoBehaviour:
   lives: 4
   miniGames:
   - test_minigame
+  - friend_minigame
   completeLines:
   - Nice!
   failLines:
