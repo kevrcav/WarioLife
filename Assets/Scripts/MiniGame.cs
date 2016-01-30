@@ -12,6 +12,8 @@ public class MiniGame : MonoBehaviour {
    float currentTime;
    bool playing = true;
    bool won = false;
+   bool useSpecificLine;
+   int specificLine;
 
    public string instruction;
    public string[] completeLines;
@@ -42,8 +44,14 @@ public class MiniGame : MonoBehaviour {
    public void ReportLose(float loseDelay = 1)
    {
       if (!playing) return;
-      StartCoroutine(ReportAfterDelay(loseDelay, true));
+      StartCoroutine(ReportAfterDelay(loseDelay, false));
       playing = false;
+   }
+
+   public void SetEndLine(int index)
+   {
+      useSpecificLine = true;
+      specificLine = index;
    }
 
    IEnumerator ReportAfterDelay(float winDelay, bool win)
@@ -78,9 +86,9 @@ public class MiniGame : MonoBehaviour {
    public string GetCompleteLine()
    {
       if (!won && failLines.Length > 0)
-         return failLines[Random.Range(0, failLines.Length)];
+         return failLines[useSpecificLine ? specificLine : Random.Range(0, failLines.Length)];
       else if (completeLines.Length > 0)
-         return completeLines[Random.Range(0, completeLines.Length)];
+         return completeLines[useSpecificLine ? specificLine : Random.Range(0, completeLines.Length)];
       else
          return "";
    }
