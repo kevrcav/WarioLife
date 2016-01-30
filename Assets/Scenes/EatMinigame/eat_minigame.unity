@@ -1913,8 +1913,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 10
-  happinessReward: 10
-  happinessPenalty: 20
+  happinessReward: 0.25
+  happinessPenalty: 0.3
   winOnTimeOut: 0
   instruction: Eat!
   completeLines:

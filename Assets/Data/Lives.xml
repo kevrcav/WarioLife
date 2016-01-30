@@ -104,4 +104,62 @@
 	      </Minigames>
 	   </Decrepit>
 	</AllFoodLife>
+
+	<GameFlow>
+	   <Baby>
+	      <Speeds>
+	         <Start>1</Start>
+	         <End>1.5</End>
+	      </Speeds>
+	      <Repeats>2</Repeats>
+	      <Minigames>
+	         <eat_minigame />
+	         <friend_minigame />
+	      </Minigames>
+	   </Baby>
+	   <Youth>
+	      <Speeds>
+	         <Start>1.2</Start>
+	         <End>2</End>
+	      </Speeds>
+	      <Repeats>2</Repeats>
+	      <Minigames>
+	         <eat_minigame />
+	         <friend_minigame />
+	      </Minigames>
+	   </Youth>
+	   <Hipster>
+	      <Speeds>
+	         <Start>1.5</Start>
+	         <End>3</End>
+	      </Speeds>
+	      <Repeats>2</Repeats>
+	      <Minigames>
+	         <eat_minigame />
+	         <friend_minigame />
+	      </Minigames>
+	   </Hipster>
+	   <Grownup>
+	      <Speeds>
+	         <Start>1</Start>
+	         <End>2</End>
+	      </Speeds>
+	      <Repeats>2</Repeats>
+	      <Minigames>
+	         <eat_minigame />
+	         <friend_minigame />
+	      </Minigames>
+	   </Grownup>
+	   <Decrepit>
+	      <Speeds>
+	         <Start>1</Start>
+	         <End>2</End>
+	      </Speeds>
+	      <Repeats>2</Repeats>
+	      <Minigames>
+	         <eat_minigame />
+	         <friend_minigame />
+	      </Minigames>
+	   </Decrepit>
+	</GameFlow>
 </Minigames>

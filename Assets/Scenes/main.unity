@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingDoors: {fileID: 1309824893}
-  currentConfigName: TestLife
+  currentConfigName: GameFlow
   miniGames:
   - stage: 0
     numRepeats: 2
