@@ -24,7 +24,7 @@ public class LoadingMgr : MonoBehaviour {
 
    IEnumerator LoadSceneCoroutine(string scene)
    {
-      yield return SceneManager.LoadSceneAsync(scene);
+      yield return SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
    }
 
    public void MiniGameLoaded(MiniGame minigame)
@@ -36,8 +36,14 @@ public class LoadingMgr : MonoBehaviour {
    public void UnloadScene(MiniGame miniGame)
    {
       string miniGameName = miniGame.name;
-      SceneManager.UnloadScene(miniGameName);
+      StartCoroutine(UnloadNextFrame(miniGameName));
       if (OnSceneUnloaded != null)
          OnSceneUnloaded(miniGameName);
+   }
+
+   IEnumerator UnloadNextFrame(string scene)
+   {
+      yield return new WaitForEndOfFrame();
+      SceneManager.UnloadScene(scene);
    }
 }
