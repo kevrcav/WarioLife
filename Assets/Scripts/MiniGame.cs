@@ -68,7 +68,7 @@ public class MiniGame : MonoBehaviour {
       specificLine = index;
    }
 
-   public void SetTime(int time)
+   public void SetTime(float time)
    {
       gameTime = time;
       currentTime = time;
