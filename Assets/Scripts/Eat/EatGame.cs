@@ -62,19 +62,21 @@ public class EatGame : MonoBehaviour {
 
     void SetupMiniGame()
     {
-        SetSpeed();
-    }
- 
-    void SetSpeed()
-    {
+        // set anim parameters
+        int curr_stage = (int)(MiniGameMgr.Instance.GetLifeStage());
+        int curr_iter = MiniGameMgr.Instance.GetRepeatTime();
+        bodyAnim.SetInteger("stage", curr_stage);
+        bodyAnim.SetInteger("iter", curr_iter);
+
+        // set anim speeds (above and beyond mgr-driven overall speed changes)
         float speed = Mathf.Lerp(minAnimSpeed, maxAnimSpeed, difficulty);
-        float duration = Mathf.Lerp(maxTime, minTime, difficulty);
         handAnim.speed = speed;
         bodyAnim.speed = speed;
         headAnim.speed = speed;
         anchorAnim.speed = speed;
-        //int int_duration = (int)duration;
-        //miniGame.gameTime = (int)duration;
+
+        float duration = Mathf.Lerp(maxTime, minTime, difficulty);
+        miniGame.SetTime(duration);
     }
 
     void ResolveAction()
