@@ -22,7 +22,7 @@ public class WorkMinigame : MonoBehaviour {
     {
         if (Input.anyKey)
         {
-            chooser.SetTrigger("Stop");
+            chooser.enabled = false;
             resultsRunning = true;
             if (swaying)
             {

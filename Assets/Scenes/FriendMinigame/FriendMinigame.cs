@@ -10,6 +10,7 @@ public class FriendMinigame : MonoBehaviour {
     public Animator playerAnimator;
     public Animator friendAnimator;
     private bool resultsRunning;
+    public float endDelay;
 
     void Start () {
         resultsRunning = false;
@@ -32,27 +33,39 @@ public class FriendMinigame : MonoBehaviour {
         if (Input.anyKey)
         {
             resultsRunning = true;
-            playerAnimator.SetTrigger("Action");
             if (isLooking)
             {
-                friendAnimator.SetTrigger("ReactGood");
-                MiniGame.Instance.ReportWin(1.5f);
+                StartCoroutine(GoodEnding());
             }
             else
             {
-                friendAnimator.SetTrigger("ReactBad");
-                MiniGame.Instance.ReportLose(1.5f);
+                StartCoroutine(BadEnding());
             }
         }
 	}
 
     IEnumerator LookCycle()
     {
-        isLooking = (Random.value < 0.5);
+        isLooking = false;
         while (true) {
             yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
             isLooking = !isLooking;
         }
     }
 
+    IEnumerator GoodEnding()
+    {
+        playerAnimator.SetTrigger("ActionGood");
+        yield return new WaitForSeconds(endDelay);
+        friendAnimator.SetTrigger("ReactGood");
+        MiniGame.Instance.ReportWin();
+    }
+
+    IEnumerator BadEnding()
+    {
+        playerAnimator.SetTrigger("ActionBad");
+        yield return new WaitForSeconds(endDelay);
+        friendAnimator.SetTrigger("ReactBad");
+        MiniGame.Instance.ReportLose();
+    }
 }

@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: player_action
+  m_Name: player_goodaction
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -36,7 +36,7 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300022, guid: 616383d8b9f32c64cb773e5fda279c15, type: 3}
+      value: {fileID: 21300058, guid: 4b5af0d2e20c84739b24b817106e39d0, type: 3}
     attribute: m_Sprite
     path: head
     classID: 212
@@ -61,7 +61,7 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300022, guid: 616383d8b9f32c64cb773e5fda279c15, type: 3}
+    - {fileID: 21300058, guid: 4b5af0d2e20c84739b24b817106e39d0, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
