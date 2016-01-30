@@ -33,15 +33,15 @@ public class FriendMinigame : MonoBehaviour {
         {
             resultsRunning = true;
             playerAnimator.SetTrigger("Action");
-            if (!isLooking)
+            if (isLooking)
             {
                 friendAnimator.SetTrigger("ReactGood");
-                MiniGame.Instance.ReportWin();
+                MiniGame.Instance.ReportWin(1.5f);
             }
             else
             {
                 friendAnimator.SetTrigger("ReactBad");
-                MiniGame.Instance.ReportLose();
+                MiniGame.Instance.ReportLose(1.5f);
             }
         }
 	}
