@@ -4,10 +4,19 @@ using System.Collections;
 [System.Serializable]
 public struct LifeStage
 {
-   public string stageName;
+   public Stage stage;
    public int numRepeats;
    public string[] minigames;
 } 
+
+public enum Stage
+{
+   kBaby,
+   kYouth,
+   kHipster,
+   kGrownUp,
+   kDecrepit
+}
 
 public class MiniGameMgr : MonoBehaviour {
 
@@ -17,7 +26,7 @@ public class MiniGameMgr : MonoBehaviour {
    public int score;
    public int lives;
    public LifeStage[] miniGames;
-   int currentLifestageIndex;
+   Stage currentLifeStage = Stage.kBaby;
    int currentMinigameIndex;
    int currentRepeats;
    public string[] completeLines;
@@ -136,20 +145,20 @@ public class MiniGameMgr : MonoBehaviour {
       }
 
       ++currentMinigameIndex;
-      int numberInStage = miniGames[currentLifestageIndex].minigames.Length;
+      int numberInStage = miniGames[(int)currentLifeStage].minigames.Length;
       if (currentMinigameIndex < numberInStage)
       {
-         currentMinigameName = miniGames[currentLifestageIndex].minigames[currentMinigameIndex];
+         currentMinigameName = miniGames[(int)currentLifeStage].minigames[currentMinigameIndex];
          return;
       }
 
       currentMinigameIndex = -1;
-      if (currentRepeats < miniGames[currentLifestageIndex].numRepeats)
+      if (currentRepeats < miniGames[(int)currentLifeStage].numRepeats)
          currentRepeats++;
       else
       {
          currentRepeats = 0;
-         currentLifestageIndex = (currentLifestageIndex + 1) % miniGames.Length;
+         currentLifeStage = (Stage) (((int)currentLifeStage + 1) % miniGames.Length);
       }
       
       ChooseMinigame();
@@ -170,6 +179,16 @@ public class MiniGameMgr : MonoBehaviour {
           if (--lives <= 0)
               GameOver();
       }
+   }
+
+   public Stage GetLifeStage()
+   {
+      return currentLifeStage;
+   }
+
+   public int GetRepeatTime()
+   {
+      return currentRepeats;
    }
 
    void IncreaseSpeed()

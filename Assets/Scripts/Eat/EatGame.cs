@@ -9,6 +9,8 @@ public class EatGame : MonoBehaviour {
     public float difficulty = 0;
     public float minAnimSpeed = 1;
     public float maxAnimSpeed = 3;
+    public float maxTime = 10f;
+    public float minTime = 5f;
     public Animator anchorAnim;
     public Animator handAnim;
     public Animator headAnim;
@@ -18,16 +20,25 @@ public class EatGame : MonoBehaviour {
     MiniGame miniGame;
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         miniGame = GetComponent<MiniGame>();
-        OneButtonInputMgr.Instance.OnButtonDown += OnButtonDown;
-        SetupMiniGame();
 	}
-	
-    void OnDisable()
+
+    void Start()
     {
-        OneButtonInputMgr.Instance.OnButtonDown -= OnButtonDown;
+        OneButtonInputMgr.Instance.OnButtonDown += OnButtonDown;
+    }
+	
+    void OnEnable()
+    {
+        SetupMiniGame();
+    }
+
+    void OnDestroy()
+    {
+        if (OneButtonInputMgr.Instance != null)
+            OneButtonInputMgr.Instance.OnButtonDown -= OnButtonDown;
     }
 
 	// Update is called once per frame
@@ -57,15 +68,18 @@ public class EatGame : MonoBehaviour {
     void SetSpeed()
     {
         float speed = Mathf.Lerp(minAnimSpeed, maxAnimSpeed, difficulty);
+        float duration = Mathf.Lerp(maxTime, minTime, difficulty);
         handAnim.speed = speed;
         bodyAnim.speed = speed;
         headAnim.speed = speed;
         anchorAnim.speed = speed;
+        //int int_duration = (int)duration;
+        //miniGame.gameTime = (int)duration;
     }
 
     void ResolveAction()
     {
-        Debug.Log("WOO LET'S RESOLVE THIS ACTION");
+        //Debug.Log("WOO LET'S RESOLVE THIS ACTION");
         float anchor_y = anchorAnim.transform.localPosition.y;
         if (anchor_y < minAnchorY)
         {
