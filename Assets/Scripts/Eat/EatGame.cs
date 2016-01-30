@@ -68,6 +68,12 @@ public class EatGame : MonoBehaviour {
         Debug.Log("stage | iter = " + curr_stage.ToString() + " | " + curr_iter.ToString());
         bodyAnim.SetInteger("stage", curr_stage);
         bodyAnim.SetInteger("iter", curr_iter);
+        handAnim.SetInteger("stage", curr_stage);
+        handAnim.SetInteger("iter", curr_iter);
+        anchorAnim.SetInteger("stage", curr_stage);
+        anchorAnim.SetInteger("iter", curr_iter);
+        headAnim.SetInteger("stage", curr_stage);
+        headAnim.SetInteger("iter", curr_iter);
 
         // set anim speeds (above and beyond mgr-driven overall speed changes)
         float speed = Mathf.Lerp(minAnimSpeed, maxAnimSpeed, difficulty);
