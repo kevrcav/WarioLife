@@ -77,7 +77,7 @@ public class EatGame : MonoBehaviour {
             anchorAnim.SetTrigger("result_just_right");
             headAnim.SetTrigger("result_success_01");
             bodyAnim.SetTrigger("result_success_01");
-            miniGame.ReportWin();
+            miniGame.ReportWin(1.5f);
         }
         hasActed = true;
     }

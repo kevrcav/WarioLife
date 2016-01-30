@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a2dc2978d02443ca486e7f04c6451b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficulty: 1
+  difficulty: 0
   minAnimSpeed: 1
   maxAnimSpeed: 3
   anchorAnim: {fileID: 1923907333}
@@ -501,7 +501,7 @@ AudioListener:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1997783454}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1997783456
 Behaviour:
   m_ObjectHideFlags: 0
