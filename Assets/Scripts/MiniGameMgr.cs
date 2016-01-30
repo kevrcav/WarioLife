@@ -1,6 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[System.Serializable]
+public struct LifeStage
+{
+   public string stageName;
+   public int numRepeats;
+   public string[] minigames;
+} 
+
 public class MiniGameMgr : MonoBehaviour {
 
    public static MiniGameMgr Instance;
@@ -8,12 +16,17 @@ public class MiniGameMgr : MonoBehaviour {
    public LoadingDoors loadingDoors;
    public int score;
    public int lives;
-   public string[] miniGames;
+   public LifeStage[] miniGames;
+   int currentLifestageIndex;
+   int currentMinigameIndex;
+   int currentRepeats;
    public string[] completeLines;
    public string[] failLines;
    bool nextGameLoaded;
    bool lastGameUnloaded = true;
    bool betweenSequenceFinished;
+
+   bool oneGameMode;
 
    float currentSpeed = 1;
    public float endingSpeed = 3;
@@ -32,11 +45,19 @@ public class MiniGameMgr : MonoBehaviour {
 
    void Start()
    {
+      string minigameToTest = PlayerPrefs.GetString("minigame_to_test");
+      if (minigameToTest != "")
+      {
+         PlayerPrefs.SetString("minigame_to_test", "");
+         currentMinigameName = minigameToTest;
+         oneGameMode = true;
+      }
       LoadingMgr.Instance.OnSceneLoaded += Instance_OnSceneLoaded;
       LoadingMgr.Instance.OnSceneUnloaded += Instance_OnSceneUnloaded;
       loadingDoors.OnDoorsOpened += Instance_OnDoorsOpened;
       loadingDoors.OnDoorsClosed += Instance_OnDoorsClosed;
 
+      currentMinigameIndex = -1;
       ChooseMinigame();
       lastGameUnloaded = true;
       LoadingMgr.Instance.LoadScene(currentMinigameName);
@@ -109,10 +130,29 @@ public class MiniGameMgr : MonoBehaviour {
 
    void ChooseMinigame()
    {
-      string lastMiniGame = currentMinigameName;
-      currentMinigameName = miniGames[Random.Range(0, miniGames.Length)];
-      while (miniGames.Length > 1 && lastMiniGame == currentMinigameName)
-         currentMinigameName = miniGames[Random.Range(0, miniGames.Length)];
+      if (oneGameMode)
+      {
+         return;
+      }
+
+      ++currentMinigameIndex;
+      int numberInStage = miniGames[currentLifestageIndex].minigames.Length;
+      if (currentMinigameIndex < numberInStage)
+      {
+         currentMinigameName = miniGames[currentLifestageIndex].minigames[currentMinigameIndex];
+         return;
+      }
+
+      currentMinigameIndex = -1;
+      if (currentRepeats < miniGames[currentLifestageIndex].numRepeats)
+         currentRepeats++;
+      else
+      {
+         currentRepeats = 0;
+         currentLifestageIndex = (currentLifestageIndex + 1) % miniGames.Length;
+      }
+      
+      ChooseMinigame();
    }
 
    public void Report(bool won)

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class MiniGame : MonoBehaviour {
 
@@ -21,6 +22,12 @@ public class MiniGame : MonoBehaviour {
    void Awake()
    {
       Instance = this;
+      if (LoadingMgr.Instance == null)
+      {
+         PlayerPrefs.SetString("minigame_to_test", name);
+         SceneManager.LoadScene("main");
+         return;
+      }
       LoadingMgr.Instance.MiniGameLoaded(this);
    }
 

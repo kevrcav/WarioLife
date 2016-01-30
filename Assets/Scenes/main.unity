@@ -191,8 +191,29 @@ MonoBehaviour:
   score: 0
   lives: 4
   miniGames:
-  - test_minigame
-  - friend_minigame
+  - stageName: Baby
+    numRepeats: 2
+    minigames:
+    - test_minigame
+  - stageName: kid
+    numRepeats: 1
+    minigames:
+    - friend_minigame
+  - stageName: 
+    numRepeats: 0
+    minigames: []
+  - stageName: 
+    numRepeats: 0
+    minigames: []
+  - stageName: 
+    numRepeats: 0
+    minigames: []
+  - stageName: 
+    numRepeats: 0
+    minigames: []
+  - stageName: 
+    numRepeats: 0
+    minigames: []
   completeLines:
   - Nice!
   failLines:
