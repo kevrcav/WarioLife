@@ -13,3 +13,5 @@ EditorBuildSettings:
     path: Assets/Scenes/FriendMinigame/friend_minigame.unity
   - enabled: 1
     path: Assets/Scenes/EatMinigame/eat_minigame.unity
+  - enabled: 1
+    path: Assets/Scenes/DangerMinigame/danger_minigame.unity
