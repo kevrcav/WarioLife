@@ -65,6 +65,7 @@ public class EatGame : MonoBehaviour {
         // set anim parameters
         int curr_stage = (int)(MiniGameMgr.Instance.GetLifeStage());
         int curr_iter = MiniGameMgr.Instance.GetRepeatTime();
+        Debug.Log("stage | iter = " + curr_stage.ToString() + " | " + curr_iter.ToString());
         bodyAnim.SetInteger("stage", curr_stage);
         bodyAnim.SetInteger("iter", curr_iter);
 
