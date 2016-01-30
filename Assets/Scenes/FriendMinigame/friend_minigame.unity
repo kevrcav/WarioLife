@@ -715,8 +715,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 10
-  happinessReward: 0
-  happinessPenalty: 0
+  happinessReward: 0.1
+  happinessPenalty: 0.25
   winOnTimeOut: 0
   instruction: I want to make them Happy
   completeLines:
