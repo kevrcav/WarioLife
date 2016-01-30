@@ -92,7 +92,7 @@ public class MiniGameMgr : MonoBehaviour {
 
       minigameSets = new Dictionary<string, LifeStage[]>();
 
-      foreach (XmlNode config in configs.ChildNodes)
+      foreach (XmlNode config in configs.SelectSingleNode("Minigames").ChildNodes)
       {
          List<LifeStage> stages = new List<LifeStage>();
          foreach (XmlNode stageNode in config.ChildNodes)
