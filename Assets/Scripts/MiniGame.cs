@@ -21,6 +21,7 @@ public class MiniGame : MonoBehaviour {
    void Awake()
    {
       Instance = this;
+      LoadingMgr.Instance.MiniGameLoaded(this);
    }
 
 	public void ReportWin()

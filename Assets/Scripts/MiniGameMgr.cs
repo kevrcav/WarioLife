@@ -12,7 +12,7 @@ public class MiniGameMgr : MonoBehaviour {
    public string[] completeLines;
    public string[] failLines;
    bool nextGameLoaded;
-   bool lastGameUnloaded;
+   bool lastGameUnloaded = true;
    bool betweenSequenceFinished;
 
    float currentSpeed = 1;
@@ -68,7 +68,10 @@ public class MiniGameMgr : MonoBehaviour {
       nextGameLoaded = false;
       betweenSequenceFinished = false;
       StartCoroutine(MiniGameBridge());
-      LoadingMgr.Instance.UnloadScene(currentMinigame);
+      if (currentMinigame != null)
+         LoadingMgr.Instance.UnloadScene(currentMinigame);
+      else
+         lastGameUnloaded = true;
       ChooseMinigame();
       LoadingMgr.Instance.LoadScene(currentMinigameName);
    }
