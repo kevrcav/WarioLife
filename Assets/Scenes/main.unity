@@ -219,29 +219,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loadingDoors: {fileID: 1309824893}
-  happiness: 0
+  currentConfigName: TestLife
   miniGames:
   - stage: 0
     numRepeats: 2
+    speedStart: 0
+    speedEnd: 0
     minigames:
     - test_minigame
   - stage: 1
     numRepeats: 1
+    speedStart: 0
+    speedEnd: 0
     minigames:
     - friend_minigame
   - stage: 2
     numRepeats: 0
+    speedStart: 0
+    speedEnd: 0
     minigames: []
   - stage: 3
     numRepeats: 0
+    speedStart: 0
+    speedEnd: 0
     minigames: []
   - stage: 4
     numRepeats: 0
+    speedStart: 0
+    speedEnd: 0
     minigames: []
   completeLines:
   - Nice!
   failLines:
   - Boo!
+  configData: {fileID: 4900000, guid: e255559fa4fd16a4d943b044b6279988, type: 3}
   endingSpeed: 3
   increment: 0.2
   speedUpFrequency: 5
