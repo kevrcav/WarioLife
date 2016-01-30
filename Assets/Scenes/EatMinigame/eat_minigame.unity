@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cheerioParticles: {fileID: 1508631046}
-  hotdogParticles: {fileID: 205541219}
+  hotdogParticles: {fileID: 1508631046}
 --- !u!1001 &596988308
 Prefab:
   m_ObjectHideFlags: 0
