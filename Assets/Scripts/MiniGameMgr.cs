@@ -23,8 +23,6 @@ public class MiniGameMgr : MonoBehaviour {
    public static MiniGameMgr Instance;
 
    public LoadingDoors loadingDoors;
-   public int score;
-   public int lives;
    public LifeStage[] miniGames;
    Stage currentLifeStage = Stage.kBaby;
    int currentMinigameIndex;
@@ -38,6 +36,7 @@ public class MiniGameMgr : MonoBehaviour {
    bool oneGameMode;
 
    float currentSpeed = 1;
+   float happiness = 1;
    public float endingSpeed = 3;
    public float increment = .2f;
    public int speedUpFrequency = 5;
@@ -169,16 +168,8 @@ public class MiniGameMgr : MonoBehaviour {
       lastGameWon = won;
       loadingDoors.CloseDoors();
       HUDMgr.Instance.SetTimerOn(false);
-      if (won)
-      {
-          if (++score % speedUpFrequency == 0)
-              IncreaseSpeed();
-      }
-      else
-      {
-          if (--lives <= 0)
-              GameOver();
-      }
+      if (happiness <= 0)
+         GameOver();
    }
 
    public Stage GetLifeStage()
@@ -189,6 +180,16 @@ public class MiniGameMgr : MonoBehaviour {
    public int GetRepeatTime()
    {
       return currentRepeats;
+   }
+
+   public float GetHappiness()
+   {
+      return happiness;
+   }
+
+   public void ChangeHappiness(float change)
+   {
+      happiness = Mathf.Clamp01(happiness + change);
    }
 
    void IncreaseSpeed()
@@ -213,8 +214,7 @@ public class MiniGameMgr : MonoBehaviour {
        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Delete) || Input.GetKeyDown(KeyCode.Return))
        {
           Time.timeScale = 1;
-          lives = 4;
-          score = 0;
+          happiness = 1;
        }
    }
 }

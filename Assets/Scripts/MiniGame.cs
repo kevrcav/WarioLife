@@ -6,6 +6,9 @@ public class MiniGame : MonoBehaviour {
    
    public float gameTime = 5;
 
+   public float happinessReward;
+   public float happinessPenalty;
+
    public bool winOnTimeOut;
 
    float currentTime;
@@ -32,9 +35,20 @@ public class MiniGame : MonoBehaviour {
       LoadingMgr.Instance.MiniGameLoaded(this);
    }
 
+   public void SetHappinessReward(float reward)
+   {
+      happinessReward = reward;
+   }
+
+   public void SetHappinessPenalty(float penalty)
+   {
+      happinessPenalty = penalty;
+   }
+
 	public void ReportWin(float winDelay = 1)
    {
       if (!playing) return;
+      MiniGameMgr.Instance.ChangeHappiness(happinessReward);
       StartCoroutine(ReportAfterDelay(winDelay, true));
       playing = false;
       won = true;
@@ -43,6 +57,7 @@ public class MiniGame : MonoBehaviour {
    public void ReportLose(float loseDelay = 1)
    {
       if (!playing) return;
+      MiniGameMgr.Instance.ChangeHappiness(happinessPenalty);
       StartCoroutine(ReportAfterDelay(loseDelay, false));
       playing = false;
    }
@@ -77,7 +92,7 @@ public class MiniGame : MonoBehaviour {
       if (playing)
       {
          currentTime -= Time.deltaTime;
-         HUDMgr.Instance.SetTimeRemaining(currentTime);
+         HUDMgr.Instance.SetTimeRemaining(currentTime / gameTime);
          if (currentTime <= 0)
          {
             if (winOnTimeOut)
