@@ -11,8 +11,19 @@ public class FriendMinigame : MonoBehaviour {
     public Animator friendAnimator;
     private bool resultsRunning;
     public float endDelay;
+    public Sprite[] spritelist;
+    public SpriteRenderer gift;
 
     void Start () {
+
+        int curr_stage = (int)(MiniGameMgr.Instance.GetLifeStage());
+        int curr_iter = MiniGameMgr.Instance.GetRepeatTime();
+        playerAnimator.SetInteger("stage", curr_stage);
+        playerAnimator.SetInteger("iter", curr_iter);
+        friendAnimator.SetInteger("stage", curr_stage);
+        friendAnimator.SetInteger("iter", curr_iter);
+        gift.sprite = spritelist[(curr_stage * 3) + curr_iter];
+
         resultsRunning = false;
         StartCoroutine(LookCycle());
     }
