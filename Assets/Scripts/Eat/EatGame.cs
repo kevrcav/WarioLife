@@ -21,21 +21,33 @@ public class EatGame : MonoBehaviour {
 	void Start ()
     {
         miniGame = GetComponent<MiniGame>();
+        OneButtonInputMgr.Instance.OnButtonDown += OnButtonDown;
         SetupMiniGame();
 	}
 	
+    void OnDisable()
+    {
+        OneButtonInputMgr.Instance.OnButtonDown -= OnButtonDown;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
         if (Input.anyKeyDown)
         {
-            if (!hasActed)
-                ResolveAction();
+//            if (!hasActed)
+//                ResolveAction();
 //            else
 //                ResetAction();
         }
 	
 	}
+
+    void OnButtonDown()
+    {
+        if (!hasActed)
+            ResolveAction();
+    }
 
     void SetupMiniGame()
     {
