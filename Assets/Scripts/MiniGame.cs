@@ -31,19 +31,25 @@ public class MiniGame : MonoBehaviour {
       LoadingMgr.Instance.MiniGameLoaded(this);
    }
 
-	public void ReportWin()
+	public void ReportWin(float winDelay = 1)
    {
       if (!playing) return;
-      MiniGameMgr.Instance.Report(true);
+      StartCoroutine(ReportAfterDelay(winDelay, true));
       playing = false;
       won = true;
    }
 
-   public void ReportLose()
+   public void ReportLose(float loseDelay = 1)
    {
       if (!playing) return;
-      MiniGameMgr.Instance.Report(false);
+      StartCoroutine(ReportAfterDelay(loseDelay, true));
       playing = false;
+   }
+
+   IEnumerator ReportAfterDelay(float winDelay, bool win)
+   {
+      yield return new WaitForSeconds(winDelay);
+      MiniGameMgr.Instance.Report(win);
    }
 
    public void StartGame()
