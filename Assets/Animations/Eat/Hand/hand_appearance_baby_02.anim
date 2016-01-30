@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: hand_appearance_kid_01
+  m_Name: hand_appearance_baby_02
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,7 +20,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
@@ -41,14 +41,14 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 0}
+      value: {fileID: 21300000, guid: 89e87984866d9f1409e4cc36c406ffce, type: 3}
     attribute: m_Sprite
     path: Spoon
     classID: 212
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: e813a4ccd342e204cb9a94443564a142, type: 3}
+      value: {fileID: 21300000, guid: 8676a03a9247dee41a9820b9b84fcb7b, type: 3}
     attribute: m_Sprite
     path: Spoon/Cheerios
     classID: 212
@@ -86,8 +86,8 @@ AnimationClip:
       isPPtrCurve: 1
     pptrCurveMapping:
     - {fileID: 21300000, guid: 791c0fec8f8d14146b1819bd7d80db20, type: 3}
-    - {fileID: 0}
-    - {fileID: 21300000, guid: e813a4ccd342e204cb9a94443564a142, type: 3}
+    - {fileID: 21300000, guid: 89e87984866d9f1409e4cc36c406ffce, type: 3}
+    - {fileID: 21300000, guid: 8676a03a9247dee41a9820b9b84fcb7b, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -113,7 +113,7 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
+        value: 1
         inSlope: Infinity
         outSlope: Infinity
         tangentMode: 31
