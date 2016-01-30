@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: eat_body_success_01
+  m_Name: eat_body_success_kid_01
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -31,8 +31,8 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: {x: -4.4677286, y: -1.6, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        inSlope: {x: -8.849085, y: 0, z: 0}
+        outSlope: {x: -8.849085, y: 0, z: 0}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -87,8 +87,8 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: -4.4677286
-        inSlope: 0
-        outSlope: 0
+        inSlope: -8.849085
+        outSlope: -8.849085
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -102,8 +102,8 @@ AnimationClip:
       m_Curve:
       - time: 0
         value: -1.6
-        inSlope: 3.119997
-        outSlope: 3.119997
+        inSlope: -18.04
+        outSlope: -18.04
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
