@@ -3,8 +3,12 @@ using System.Collections;
 
 public class EatGame : MonoBehaviour {
 
-    public bool hasActed = false;
-    public bool isActing = false;
+    private bool hasActed = false;
+    private bool isActing = false;
+    [Range(0,1)]
+    public float difficulty = 0;
+    public float minAnimSpeed = 1;
+    public float maxAnimSpeed = 3;
     public Animator anchorAnim;
     public Animator handAnim;
     public Animator headAnim;
@@ -17,6 +21,7 @@ public class EatGame : MonoBehaviour {
 	void Start ()
     {
         miniGame = GetComponent<MiniGame>();
+        SetupMiniGame();
 	}
 	
 	// Update is called once per frame
@@ -32,20 +37,19 @@ public class EatGame : MonoBehaviour {
 	
 	}
 
-    // woo doesn't work
-//    void ResetAction()
-//    {
-//        Debug.Log("Woo, lets reset!");
-//        handAnim.ResetTrigger("result_too_low");
-//        handAnim.ResetTrigger("result_too_high");
-//        handAnim.ResetTrigger("result_just_right");
-//        anchorAnim.ResetTrigger("result_just_right");
-//        anchorAnim.StopPlayback();
-//        anchorAnim.Play("hand_updown");
-//        anchorAnim.StartPlayback();
-//        handAnim.Play("hand_reset");
-//        hasActed = false;
-//    }
+    void SetupMiniGame()
+    {
+        SetSpeed();
+    }
+ 
+    void SetSpeed()
+    {
+        float speed = Mathf.Lerp(minAnimSpeed, maxAnimSpeed, difficulty);
+        handAnim.speed = speed;
+        bodyAnim.speed = speed;
+        headAnim.speed = speed;
+        anchorAnim.speed = speed;
+    }
 
     void ResolveAction()
     {

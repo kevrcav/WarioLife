@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c88e7eb9bbc11fb4c8ef604eda857d4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameTime: 5
+  gameTime: 10
   winOnTimeOut: 0
   instruction: 
   completeLines: []
@@ -354,8 +354,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40a2dc2978d02443ca486e7f04c6451b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hasActed: 0
-  isActing: 0
+  difficulty: 1
+  minAnimSpeed: 1
+  maxAnimSpeed: 3
   anchorAnim: {fileID: 1923907333}
   handAnim: {fileID: 556662047}
   headAnim: {fileID: 1996644000}
