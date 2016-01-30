@@ -30,17 +30,17 @@ public class DangerMinigame : MonoBehaviour {
             if (!Input.anyKey && startedMoving && (player.position.x > farEnough) && (player.position.x < tooDamnFar))
             {
                 resultsRunning = true;
-                MiniGame.Instance.ReportWin();
+                MiniGame.Instance.ReportWin(1.5f);
             }
             if (!Input.anyKey && startedMoving && (player.position.x < farEnough))
             {
                 resultsRunning = true;
-                MiniGame.Instance.ReportLose();
+                MiniGame.Instance.ReportLose(1.5f);
             }
             if (player.position.x > tooDamnFar)
             {
                 resultsRunning = true;
-                MiniGame.Instance.ReportLose();
+                MiniGame.Instance.ReportLose(1.5f);
             }
         }
 
