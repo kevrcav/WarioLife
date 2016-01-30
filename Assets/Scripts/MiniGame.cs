@@ -53,6 +53,12 @@ public class MiniGame : MonoBehaviour {
       specificLine = index;
    }
 
+   public void SetTime(int time)
+   {
+      gameTime = time;
+      currentTime = time;
+   }
+
    IEnumerator ReportAfterDelay(float winDelay, bool win)
    {
       yield return new WaitForSeconds(winDelay);
