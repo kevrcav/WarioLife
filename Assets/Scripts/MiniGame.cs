@@ -3,9 +3,8 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 
 public class MiniGame : MonoBehaviour {
-
-   [Range(5, 10)]
-   public int gameTime = 5;
+   
+   public float gameTime = 5;
 
    public bool winOnTimeOut;
 
