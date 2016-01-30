@@ -44,12 +44,25 @@ public class FriendMinigame : MonoBehaviour {
         if (Input.anyKey)
         {
             resultsRunning = true;
+            int curr_stage = (int)(MiniGameMgr.Instance.GetLifeStage());
             if (isLooking)
             {
-                StartCoroutine(GoodEnding());
+                if (curr_stage > 3)
+                {
+                    MiniGame.Instance.SetHappinessPenalty(0.1f);
+                    StartCoroutine(BadEnding());
+                }
+                else
+                {
+                    StartCoroutine(GoodEnding());
+                }
             }
             else
             {
+                if (curr_stage > 3)
+                {
+                    MiniGame.Instance.SetHappinessPenalty(0.1f);
+                }
                 StartCoroutine(BadEnding());
             }
         }
