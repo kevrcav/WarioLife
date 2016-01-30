@@ -3,10 +3,16 @@ using System.Collections;
 
 public class EatGame : MonoBehaviour {
 
-    public bool hasActed = false;
-    public bool isActing = false;
+    private bool hasActed = false;
+    private bool isActing = false;
+    [Range(0,1)]
+    public float difficulty = 0;
+    public float minAnimSpeed = 1;
+    public float maxAnimSpeed = 3;
     public Animator anchorAnim;
     public Animator handAnim;
+    public Animator headAnim;
+    public Animator bodyAnim;
     public float maxAnchorY = 0;
     public float minAnchorY = 0;
     MiniGame miniGame;
@@ -15,6 +21,7 @@ public class EatGame : MonoBehaviour {
 	void Start ()
     {
         miniGame = GetComponent<MiniGame>();
+        SetupMiniGame();
 	}
 	
 	// Update is called once per frame
@@ -30,19 +37,18 @@ public class EatGame : MonoBehaviour {
 	
 	}
 
-    // woo doesn't work
-    void ResetAction()
+    void SetupMiniGame()
     {
-        Debug.Log("Woo, lets reset!");
-        handAnim.ResetTrigger("result_too_low");
-        handAnim.ResetTrigger("result_too_high");
-        handAnim.ResetTrigger("result_just_right");
-        anchorAnim.ResetTrigger("result_just_right");
-        anchorAnim.StopPlayback();
-        anchorAnim.Play("hand_updown");
-        anchorAnim.StartPlayback();
-        handAnim.Play("hand_reset");
-        hasActed = false;
+        SetSpeed();
+    }
+ 
+    void SetSpeed()
+    {
+        float speed = Mathf.Lerp(minAnimSpeed, maxAnimSpeed, difficulty);
+        handAnim.speed = speed;
+        bodyAnim.speed = speed;
+        headAnim.speed = speed;
+        anchorAnim.speed = speed;
     }
 
     void ResolveAction()
@@ -53,18 +59,24 @@ public class EatGame : MonoBehaviour {
         {
             handAnim.SetTrigger("result_too_low");
             anchorAnim.Stop();
+            headAnim.SetTrigger("result_fail_01");
+            bodyAnim.SetTrigger("result_fail_01");
             miniGame.ReportLose();
         }
         else if (anchor_y > maxAnchorY)
         {
             handAnim.SetTrigger("result_too_high");
             anchorAnim.Stop();
+            headAnim.SetTrigger("result_fail_01");
+            bodyAnim.SetTrigger("result_fail_01");
             miniGame.ReportLose();
         }
         else
         {
             handAnim.SetTrigger("result_just_right");
             anchorAnim.SetTrigger("result_just_right");
+            headAnim.SetTrigger("result_success_01");
+            bodyAnim.SetTrigger("result_success_01");
             miniGame.ReportWin();
         }
         hasActed = true;
