@@ -405,7 +405,7 @@ MonoBehaviour:
   happinessReward: 0.25
   happinessPenalty: 0.3
   winOnTimeOut: 0
-  instruction: Eat!
+  instruction: I ate some things.
   completeLines:
   - Yum!
   failLines:
