@@ -19,7 +19,8 @@ public enum SoundEffectType
    kTireSqual,
    kWhoosh,
    kZap,
-   kDing
+   kDing,
+   kCrowdAww
 }
 
 public class AudioMgr : MonoBehaviour {
