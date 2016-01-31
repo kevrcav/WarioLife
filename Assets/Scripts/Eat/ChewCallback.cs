@@ -23,24 +23,54 @@ public class ChewCallback : MonoBehaviour {
 
     public void OnFoodEaten()
     {
+        Stage curr_stage = MiniGameMgr.Instance.GetLifeStage();
+        int curr_iter = MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame");
+
         Debug.Log("Food is done!");
-        if (mgmgr.GetLifeStage() == Stage.kBaby && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 2)
+        if (curr_stage == Stage.kBaby && curr_iter == 2)
             cheerioParticles.Play();
-        else if (mgmgr.GetLifeStage() == Stage.kYouth && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 2)
+        else if (curr_stage == Stage.kYouth && curr_iter == 2)
         {
             Debug.Log("Launching ice cream!");
             iceCreamParticles.Play();
         }
-        else if (mgmgr.GetLifeStage() == Stage.kHipster && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 0)
+        else if (curr_stage == Stage.kHipster && curr_iter == 0)
         {
             Debug.Log("Launching puke!");
             beerParticles.Play();
         }
-        else if (mgmgr.GetLifeStage() == Stage.kDecrepit && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 2)
+        else if (curr_stage == Stage.kDecrepit && curr_iter == 2)
         {
             Debug.Log("Launching puke!");
             beerParticles.Stop();
             beerParticles.Play();
         }
+
+
+    }
+    public void OnStartSound()
+    {
+        Stage curr_stage = MiniGameMgr.Instance.GetLifeStage();
+        int curr_iter = MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame");
+
+        // sound
+        // pick sound
+        if ((curr_stage == Stage.kBaby && curr_iter == 2)
+            || (curr_stage == Stage.kHipster && curr_iter == 0))
+        {
+            AudioMgr.Instance.PlaySFX(SoundEffectType.kVomit);
+        }
+        else if ((curr_stage == Stage.kGrownUp && curr_iter == 1)
+            || (curr_stage == Stage.kGrownUp && curr_iter == 2))
+        {
+            AudioMgr.Instance.PlaySFX(SoundEffectType.kDrinking);
+        }
+        else if ((curr_stage == Stage.kBaby && curr_iter == 1)
+            || (curr_stage == Stage.kDecrepit && curr_iter == 2))
+        {
+            AudioMgr.Instance.PlaySFX(SoundEffectType.kChewingSoft);
+        }
+        else
+            AudioMgr.Instance.PlaySFX(SoundEffectType.kChewingCrunch);
     }
 }
