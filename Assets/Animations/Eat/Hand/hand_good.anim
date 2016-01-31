@@ -217,7 +217,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0.5
+  - time: 0.6666667
     functionName: OnFoodEaten
     data: 
     objectReferenceParameter: {fileID: 0}

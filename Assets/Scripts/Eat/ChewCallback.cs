@@ -4,7 +4,8 @@ using System.Collections;
 public class ChewCallback : MonoBehaviour {
 
     public ParticleSystem cheerioParticles;
-    public ParticleSystem hotdogParticles;
+    public ParticleSystem iceCreamParticles;
+    public ParticleSystem beerParticles;
     private ParticleSystem.EmissionModule emissionMod;
     private MiniGameMgr mgmgr;
 
@@ -27,8 +28,19 @@ public class ChewCallback : MonoBehaviour {
             cheerioParticles.Play();
         else if (mgmgr.GetLifeStage() == Stage.kYouth && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 2)
         {
-            Debug.Log("Launching hotdogs!");
-            hotdogParticles.Play();
+            Debug.Log("Launching ice cream!");
+            iceCreamParticles.Play();
+        }
+        else if (mgmgr.GetLifeStage() == Stage.kHipster && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 0)
+        {
+            Debug.Log("Launching puke!");
+            beerParticles.Play();
+        }
+        else if (mgmgr.GetLifeStage() == Stage.kDecrepit && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 2)
+        {
+            Debug.Log("Launching puke!");
+            beerParticles.Stop();
+            beerParticles.Play();
         }
     }
 }
