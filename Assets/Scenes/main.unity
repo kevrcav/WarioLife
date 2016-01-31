@@ -96,6 +96,7 @@ GameObject:
   - 222: {fileID: 53176119}
   - 114: {fileID: 53176118}
   - 114: {fileID: 53176117}
+  - 114: {fileID: 53176120}
   m_Layer: 5
   m_Name: Happiness
   m_TagString: Untagged
@@ -189,6 +190,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 53176115}
+--- !u!114 &53176120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 53176115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2eb3c651b6b9d94189fd5be3d1c404b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gradient:
+    key0:
+      serializedVersion: 2
+      rgba: 4278192366
+    key1:
+      serializedVersion: 2
+      rgba: 4279012608
+    key2:
+      serializedVersion: 2
+      rgba: 1506048
+    key3:
+      serializedVersion: 2
+      rgba: 1506048
+    key4:
+      serializedVersion: 2
+      rgba: 0
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 14071
+    ctime1: 23901
+    ctime2: 65535
+    ctime3: 65535
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!1 &279779371
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,32 +277,32 @@ MonoBehaviour:
   currentConfigName: GameFlow
   miniGames:
   - stage: 0
-    numRepeats: 2
     speedStart: 0
     speedEnd: 0
     minigames:
     - test_minigame
+    numIncrements: 0
   - stage: 1
-    numRepeats: 1
     speedStart: 0
     speedEnd: 0
     minigames:
     - friend_minigame
+    numIncrements: 0
   - stage: 2
-    numRepeats: 0
     speedStart: 0
     speedEnd: 0
     minigames: []
+    numIncrements: 0
   - stage: 3
-    numRepeats: 0
     speedStart: 0
     speedEnd: 0
     minigames: []
+    numIncrements: 0
   - stage: 4
-    numRepeats: 0
     speedStart: 0
     speedEnd: 0
     minigames: []
+    numIncrements: 0
   completeLines:
   - Nice!
   failLines:
@@ -709,6 +764,7 @@ GameObject:
   - 222: {fileID: 989869947}
   - 114: {fileID: 989869946}
   - 114: {fileID: 989869945}
+  - 114: {fileID: 989869948}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -802,6 +858,60 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 989869943}
+--- !u!114 &989869948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 989869943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2eb3c651b6b9d94189fd5be3d1c404b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gradient:
+    key0:
+      serializedVersion: 2
+      rgba: 4278190335
+    key1:
+      serializedVersion: 2
+      rgba: 4294902272
+    key2:
+      serializedVersion: 2
+      rgba: 0
+    key3:
+      serializedVersion: 2
+      rgba: 0
+    key4:
+      serializedVersion: 2
+      rgba: 0
+    key5:
+      serializedVersion: 2
+      rgba: 0
+    key6:
+      serializedVersion: 2
+      rgba: 0
+    key7:
+      serializedVersion: 2
+      rgba: 0
+    ctime0: 15227
+    ctime1: 21588
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2
 --- !u!1 &1007763331
 GameObject:
   m_ObjectHideFlags: 0
