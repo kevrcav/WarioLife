@@ -97,20 +97,20 @@ public class EatGame : MonoBehaviour {
             anchorToHeadMaxDelta = 1.8f;
             break;
         case Stage.kYouth:
-            headYOffset = -0.25f;
-            anchorToHeadMaxDelta = 1.8f;
+            headYOffset = -0.5f;
+            anchorToHeadMaxDelta = 2.5f;
             break;
         case Stage.kHipster:
             headYOffset = -0.75f;
-            anchorToHeadMaxDelta = 2.2f;
+            anchorToHeadMaxDelta = 2.5f;
             break;
         case Stage.kGrownUp:
             headYOffset = -0.25f;
-            anchorToHeadMaxDelta = 2.2f;
+            anchorToHeadMaxDelta = 2.5f;
             break;
         case Stage.kDecrepit:
-            headYOffset = -0.25f;
-            anchorToHeadMaxDelta = 2.2f;
+            headYOffset = -0.75f;
+            anchorToHeadMaxDelta = 2.5f;
             break;
         }
     }
