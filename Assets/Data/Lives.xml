@@ -116,11 +116,11 @@
 	        <eat_minigame />
  	        <friend_minigame />
           <increment />
-          <eat_minigame />
-          <danger_minigame />
+          	<eat_minigame />
+          	<danger_minigame />
           <increment />
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
 
 	      </Minigames>
 	   </Baby>
@@ -131,14 +131,14 @@
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
           <increment />
-          <eat_minigame />
-          <danger_minigame />
+          	<eat_minigame />
+          	<danger_minigame />
           <increment />
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
 	      </Minigames>
 	   </Youth>
 	   <Hipster>
@@ -148,14 +148,14 @@
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
           <increment />
-          <eat_minigame />
-          <danger_minigame />
+          	<eat_minigame />
+          	<danger_minigame />
           <increment />
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
 	      </Minigames>
 	   </Hipster>
 	   <Grownup>
@@ -165,14 +165,14 @@
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
           <increment />
-          <eat_minigame />
-          <danger_minigame />
+          	<eat_minigame />
+          	<danger_minigame />
           <increment />
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
 	      </Minigames>
 	   </Grownup>
 	   <Decrepit>
@@ -182,14 +182,14 @@
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
-          <eat_minigame />
-          <danger_minigame />
+          	<eat_minigame />
+          	<danger_minigame />
           <increment />
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
           <increment />
-          <eat_minigame />
-          <friend_minigame />
+          	<eat_minigame />
+          	<friend_minigame />
 	      </Minigames>
 	   </Decrepit>
 	</GameFlow>
