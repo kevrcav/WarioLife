@@ -13,6 +13,7 @@ public class FriendMinigame : MonoBehaviour {
     public float endDelay;
     public Sprite[] spritelist;
     public SpriteRenderer gift;
+    public DangerSounds soundMgr;
 
     void Start () {
 
@@ -43,7 +44,7 @@ public class FriendMinigame : MonoBehaviour {
             }
         }
         //input
-        if (Input.anyKey)
+        if (Input.anyKey && !resultsRunning)
         {
             resultsRunning = true;
             int curr_stage = (int)(MiniGameMgr.Instance.GetLifeStage());
@@ -82,6 +83,7 @@ public class FriendMinigame : MonoBehaviour {
     IEnumerator GoodEnding()
     {
         playerAnimator.SetTrigger("ActionGood");
+        soundMgr.OnDingSound();
         yield return new WaitForSeconds(endDelay);
         friendAnimator.SetTrigger("ReactGood");
         MiniGame.Instance.ReportWin(1.5f);
@@ -90,6 +92,7 @@ public class FriendMinigame : MonoBehaviour {
     IEnumerator BadEnding()
     {
         playerAnimator.SetTrigger("ActionBad");
+        soundMgr.OnWhooshSound();
         yield return new WaitForSeconds(endDelay);
         friendAnimator.SetTrigger("ReactBad");
         MiniGame.Instance.ReportLose(1.5f);

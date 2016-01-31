@@ -696,6 +696,7 @@ GameObject:
   - 4: {fileID: 1559173243}
   - 114: {fileID: 1559173242}
   - 114: {fileID: 1559173244}
+  - 114: {fileID: 1559173246}
   - 114: {fileID: 1559173245}
   m_Layer: 0
   m_Name: friend_minigame
@@ -776,6 +777,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 606f0bd83221c4e74abfde8ef07df061, type: 3}
   - {fileID: 21300000, guid: 15382f066a38106469aba357961c177b, type: 3}
   gift: {fileID: 1013469149}
+  soundMgr: {fileID: 1559173246}
 --- !u!114 &1559173245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,6 +826,17 @@ MonoBehaviour:
   curr_iter: 0
   max_inters_per_age: 2
   minigameName: friend_minigame
+--- !u!114 &1559173246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559173241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b2a46f0351da6498c32385cf1e90e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1726268387
 GameObject:
   m_ObjectHideFlags: 0

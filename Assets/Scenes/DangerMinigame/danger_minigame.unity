@@ -464,6 +464,7 @@ GameObject:
   - 114: {fileID: 1559173242}
   - 114: {fileID: 1559173244}
   - 95: {fileID: 1559173245}
+  - 114: {fileID: 1559173247}
   - 114: {fileID: 1559173246}
   m_Layer: 0
   m_Name: danger_minigame
@@ -532,6 +533,7 @@ MonoBehaviour:
   animator: {fileID: 1559173245}
   backdrop: {fileID: 972646074}
   glow: {fileID: 1175250904}
+  soundMgr: {fileID: 1559173247}
 --- !u!95 &1559173245
 Animator:
   serializedVersion: 3
@@ -582,6 +584,17 @@ MonoBehaviour:
   curr_iter: 0
   max_inters_per_age: 1
   minigameName: danger_minigame
+--- !u!114 &1559173247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559173241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61b2a46f0351da6498c32385cf1e90e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1660687046
 GameObject:
   m_ObjectHideFlags: 0

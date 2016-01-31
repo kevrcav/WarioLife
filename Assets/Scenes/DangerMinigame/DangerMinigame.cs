@@ -12,6 +12,7 @@ public class DangerMinigame : MonoBehaviour {
     public Animator animator;
     public SpriteRenderer backdrop;
     public SpriteRenderer glow;
+    public DangerSounds soundMgr;
 
 
     // Use this for initialization
@@ -27,6 +28,7 @@ public class DangerMinigame : MonoBehaviour {
 	void Update () {
         if (Input.anyKey && !resultsRunning && farEnough && !tooDamnFar)
         {
+            soundMgr.OnTireSquealSound();
             resultsRunning = true;
             backdrop.color = Color.green;
             MiniGame.Instance.ReportWin(1.5f);
@@ -36,6 +38,7 @@ public class DangerMinigame : MonoBehaviour {
         {
             resultsRunning = true;
             backdrop.color = Color.red;
+            soundMgr.OnCrowdSound();
             MiniGame.Instance.ReportLose(1.5f);
         }
 
