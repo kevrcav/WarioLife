@@ -17,7 +17,7 @@ public class FriendMinigame : MonoBehaviour {
     void Start () {
 
         int curr_stage = (int)(MiniGameMgr.Instance.GetLifeStage());
-        int curr_iter = MiniGameMgr.Instance.GetRepeatTime();
+        int curr_iter = MiniGameMgr.Instance.GetMinigameRepeats("friend_minigame");
         playerAnimator.SetInteger("stage", curr_stage);
         playerAnimator.SetInteger("iter", curr_iter);
         friendAnimator.SetInteger("stage", curr_stage);

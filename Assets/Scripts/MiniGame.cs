@@ -57,7 +57,8 @@ public class MiniGame : MonoBehaviour {
    public void ReportLose(float loseDelay = 1)
    {
       if (!playing) return;
-      MiniGameMgr.Instance.ChangeHappiness(happinessPenalty);
+      MiniGameMgr.Instance.ChangeHappiness(-happinessPenalty);
+      Debug.Log(MiniGameMgr.Instance.GetHappiness());
       StartCoroutine(ReportAfterDelay(loseDelay, false));
       playing = false;
    }
