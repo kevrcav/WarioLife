@@ -438,9 +438,9 @@ MonoBehaviour:
     minigames: []
     numIncrements: 0
   completeLines:
-  - Nice!
+  - 
   failLines:
-  - Boo!
+  - 
   configData: {fileID: 4900000, guid: e255559fa4fd16a4d943b044b6279988, type: 3}
   endingSpeed: 3
   increment: 0.2
