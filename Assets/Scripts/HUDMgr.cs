@@ -47,6 +47,11 @@ public class HUDMgr : MonoBehaviour {
       message.gameObject.SetActive(true);
    }
 
+   public void SetMessage(string gameMessage)
+   {
+      message.text = gameMessage;
+   }
+
    public void EndBridgeSequence(string gameMessage)
    {
       message.text = gameMessage;
