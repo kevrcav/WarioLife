@@ -145,4 +145,10 @@ public class MiniGame : MonoBehaviour {
    {
       livedLine = line;
    }
+
+   public void SetInstruction(string instruction)
+   {
+      this.instruction = instruction;
+      HUDMgr.Instance.SetMessage(instruction);
+   }
 }
