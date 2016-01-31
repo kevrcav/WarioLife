@@ -11,6 +11,7 @@ public class HUDMgr : MonoBehaviour {
    public Slider timer;
    public Text continueText;
    public Text youDiedText;
+   public Text startText;
 
    static string livestext = "LIVES: ";
    static string scoretext = "SCORE: ";
@@ -20,11 +21,22 @@ public class HUDMgr : MonoBehaviour {
    SliderGradientController timerGradient;
    SliderGradientController happinessGradient;
 
+   bool init;
+
    void Awake()
    {
       Instance = this;
       timerGradient = timer.GetComponent<SliderGradientController>();
       happinessGradient = happiness.GetComponent<SliderGradientController>();
+   }
+
+   public void Init()
+   {
+      if (init) return;
+      init = true;
+      happiness.gameObject.SetActive(true);
+      timer.gameObject.SetActive(true);
+      message.gameObject.SetActive(true);
    }
 
    public void StartBridgeSequence(string gameMessage)
@@ -50,6 +62,11 @@ public class HUDMgr : MonoBehaviour {
    public void SetTimerOn(bool on)
    {
        timer.gameObject.SetActive(on);
+   }
+
+   public void ShowStart(bool b)
+   {
+      startText.gameObject.SetActive(b);
    }
 
    public void ShowContinue(bool b)
