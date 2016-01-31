@@ -60,5 +60,7 @@ public class HUDMgr : MonoBehaviour {
    public void DisplayYouDiedText()
    {
       youDiedText.gameObject.SetActive(true);
+      happiness.gameObject.SetActive(false);
+      timer.gameObject.SetActive(false);
    }
 }

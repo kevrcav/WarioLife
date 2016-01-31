@@ -22,6 +22,7 @@ public class MiniGame : MonoBehaviour {
    public string[] failLines;
 
    public string tombLine;
+   public string livedLine;
 
    public static MiniGame Instance;
 
@@ -133,5 +134,15 @@ public class MiniGame : MonoBehaviour {
    public void SetTombLine(string line)
    {
       tombLine = line;
+   }
+
+   public string GetLivedLine()
+   {
+      return livedLine;
+   }
+
+   public void SetLivedLine(string line)
+   {
+      livedLine = line;
    }
 }

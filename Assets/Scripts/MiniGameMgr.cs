@@ -190,7 +190,9 @@ public class MiniGameMgr : MonoBehaviour {
          return;
       }
       if (newStage)
-         StartCoroutine(BetweenStageBridge());
+      {
+         StartCoroutine(BetweenStageBridge(currentMinigame.GetLivedLine()));
+      }
       else
          StartCoroutine(MiniGameBridge());
       if (currentMinigame != null)
@@ -200,9 +202,9 @@ public class MiniGameMgr : MonoBehaviour {
          LoadingMgr.Instance.LoadScene(currentMinigameName);
    }
 
-   IEnumerator BetweenStageBridge()
+   IEnumerator BetweenStageBridge(string livedLine)
    {
-      string completeLine = "YOU LIVED: ";
+      string completeLine = "YOU LIVED: " + livedLine;
       HUDMgr.Instance.StartBridgeSequence(completeLine);
       yield return new WaitForSeconds(2);
       HUDMgr.Instance.ShowContinue(true);
@@ -249,6 +251,8 @@ public class MiniGameMgr : MonoBehaviour {
    {
       if (lastGameUnloaded && nextGameLoaded && betweenSequenceFinished)
       {
+         if (newStage)
+            AudioMgr.Instance.PlayBGM(currentLifeStage);
          loadingDoors.OpenDoors(newStage);
          newStage = false;
          currentMinigame.StartGame();
@@ -312,6 +316,7 @@ public class MiniGameMgr : MonoBehaviour {
 
    public void Report(bool won)
    {
+      AudioMgr.Instance.PlaySFX(won ? SoundEffectType.kHappyEnd : SoundEffectType.kSadEnd);
       lastGameWon = won;
       ChooseMinigame();
       if (!cantLose && happiness <= 0)
