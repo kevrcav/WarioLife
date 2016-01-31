@@ -11,6 +11,7 @@ public class DangerMinigame : MonoBehaviour {
     public bool resultsRunning;
     public Animator animator;
     public SpriteRenderer backdrop;
+    public SpriteRenderer glow;
 
 
     // Use this for initialization
@@ -48,6 +49,14 @@ public class DangerMinigame : MonoBehaviour {
         {
             animator.Stop();
         }
-        
+        if (farEnough && !tooDamnFar)
+        {
+            glow.enabled = true;
+        }
+        if (!farEnough || tooDamnFar)
+        {
+            glow.enabled = false;
+        }
+
     }
 }
