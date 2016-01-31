@@ -28,7 +28,6 @@ public class HUDMgr : MonoBehaviour {
    public void StartBridgeSequence(string gameMessage)
    {
       happiness.value = MiniGameMgr.Instance.GetHappiness();
-      happiness.gameObject.SetActive(true);
       happinessGradient.UpdateColor(happiness.value);
       message.text = gameMessage;
       message.gameObject.SetActive(true);
@@ -36,7 +35,6 @@ public class HUDMgr : MonoBehaviour {
 
    public void EndBridgeSequence(string gameMessage)
    {
-      happiness.gameObject.SetActive(false);
       message.text = gameMessage;
       message.gameObject.SetActive(true);
    }
