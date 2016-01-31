@@ -7,10 +7,10 @@ using System.Xml;
 public struct LifeStage
 {
    public Stage stage;
-   public int numRepeats;
    public float speedStart;
    public float speedEnd;
    public string[] minigames;
+   public int numIncrements;
 } 
 
 public enum Stage
@@ -31,7 +31,6 @@ public class MiniGameMgr : MonoBehaviour {
    public LifeStage[] miniGames;
    Stage currentLifeStage = Stage.kBaby;
    int currentMinigameIndex;
-   int currentRepeats;
    public string[] completeLines;
    public string[] failLines;
    bool nextGameLoaded;
@@ -40,6 +39,8 @@ public class MiniGameMgr : MonoBehaviour {
 
    public TextAsset configData;
    Dictionary<string, LifeStage[]> minigameSets;
+   Dictionary<string, int> currentMinigameIterations;
+   int currentIncrements;
 
    bool oneGameMode;
 
@@ -64,6 +65,8 @@ public class MiniGameMgr : MonoBehaviour {
       LoadMinigameConfig();
 
       miniGames = minigameSets[currentConfigName];
+
+      currentMinigameIterations = new Dictionary<string, int>();
 
       string minigameToTest = PlayerPrefs.GetString("minigame_to_test");
       if (minigameToTest != "")
@@ -97,22 +100,25 @@ public class MiniGameMgr : MonoBehaviour {
          List<LifeStage> stages = new List<LifeStage>();
          foreach (XmlNode stageNode in config.ChildNodes)
          {
+            int numIncrements = 0;
             Stage lifeStage = GetLifeStageFromNode(stageNode);
             XmlNode speedNode = stageNode.SelectSingleNode("Speeds");
             float startSpeed = float.Parse(speedNode.SelectSingleNode("Start").InnerText);
             float endSpeed = float.Parse(speedNode.SelectSingleNode("End").InnerText);
-            int numRepeats = int.Parse(stageNode.SelectSingleNode("Repeats").InnerText);
             List<string> minigameNames = new List<string>();
             foreach (XmlNode minigameNode in stageNode.SelectSingleNode("Minigames"))
             {
-               minigameNames.Add(minigameNode.Name);
+               string miniName = minigameNode.Name;
+               if (miniName == "increment")
+                  ++numIncrements;
+               minigameNames.Add(miniName);
             }
             LifeStage newLifeStage;
             newLifeStage.minigames = minigameNames.ToArray();
-            newLifeStage.numRepeats = numRepeats;
             newLifeStage.speedStart = startSpeed;
             newLifeStage.speedEnd = endSpeed;
             newLifeStage.stage = lifeStage;
+            newLifeStage.numIncrements = numIncrements;
             stages.Add(newLifeStage);
          }
          minigameSets[config.Name] = stages.ToArray();
@@ -177,7 +183,7 @@ public class MiniGameMgr : MonoBehaviour {
       if (completeLine == "")
          completeLine = GetDefaultCompleteLine();
       HUDMgr.Instance.StartBridgeSequence(completeLine);
-      yield return new WaitForSeconds(3);
+      yield return new WaitForSeconds(1);
       HUDMgr.Instance.EndBridgeSequence(currentMinigame.GetInstruction());
       betweenSequenceFinished = true;
       StartMinigameIfReady();
@@ -212,19 +218,40 @@ public class MiniGameMgr : MonoBehaviour {
       if (currentMinigameIndex < numberInStage)
       {
          currentMinigameName = miniGames[(int)currentLifeStage].minigames[currentMinigameIndex];
+         if (currentMinigameName == "increment")
+         {
+            Increment();
+            ChooseMinigame();
+            return;
+         }
+         if (!currentMinigameIterations.ContainsKey(currentMinigameName))
+            currentMinigameIterations[currentMinigameName] = -1;
+         currentMinigameIterations[currentMinigameName]++;
          return;
       }
 
       currentMinigameIndex = -1;
-      if (currentRepeats < miniGames[(int)currentLifeStage].numRepeats)
-         currentRepeats++;
-      else
-      {
-         currentRepeats = 0;
-         currentLifeStage = (Stage) (((int)currentLifeStage + 1) % miniGames.Length);
-      }
+      currentLifeStage = (Stage)(((int)currentLifeStage + 1) % miniGames.Length);
+      NewStage();
       
       ChooseMinigame();
+   }
+
+   void Increment()
+   {
+      ++currentIncrements;
+      if (miniGames[(int)currentLifeStage].numIncrements == 0) return;
+      SetSpeed(Mathf.Lerp(miniGames[(int)currentLifeStage].speedStart,
+                          miniGames[(int)currentLifeStage].speedEnd,
+                          (float)currentIncrements / (float)miniGames[(int)currentLifeStage].numIncrements));
+   }
+
+   void NewStage()
+   {
+      currentSpeed = miniGames[(int)currentLifeStage].speedStart;
+      currentIncrements = 0;
+      currentMinigameIterations.Clear();
+      Time.timeScale = 1;
    }
 
    public void Report(bool won)
@@ -243,7 +270,16 @@ public class MiniGameMgr : MonoBehaviour {
 
    public int GetRepeatTime()
    {
-      return currentRepeats;
+      return 0;
+   }
+
+   public int GetMinigameRepeats(string minigame)
+   {
+      int numberMinigameReplays = 0;
+
+      currentMinigameIterations.TryGetValue(minigame, out numberMinigameReplays);
+
+      return numberMinigameReplays;
    }
 
    public float GetHappiness()
@@ -256,10 +292,10 @@ public class MiniGameMgr : MonoBehaviour {
       happiness = Mathf.Clamp01(happiness + change);
    }
 
-   void IncreaseSpeed()
+   void SetSpeed(float speed)
    {
-      currentSpeed = Mathf.Min(currentSpeed + increment, endingSpeed);
-      Time.timeScale = currentSpeed;
+      currentSpeed = speed;
+      Time.timeScale = speed;
    }
 
    void GameOver()
