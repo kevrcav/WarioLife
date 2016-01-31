@@ -425,8 +425,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 10
-  happinessReward: 0
-  happinessPenalty: 0
+  happinessReward: 0.5
+  happinessPenalty: 0.1
   winOnTimeOut: 0
   instruction: FLIRT WITH DANGER! STOP IN TIME!
   completeLines:

@@ -19,7 +19,6 @@ public class DangerMinigame : MonoBehaviour {
         animator.SetInteger("stage", curr_stage);
         animator.SetTrigger("go");
         resultsRunning = false;
-        backdrop.color = Color.white;
 
     }
 	
