@@ -43,6 +43,7 @@ public class MiniGameMgr : MonoBehaviour {
    int currentIncrements;
    bool newStage = true;
    bool gameOver;
+   bool justStarted = true;
    string tombstoneText;
 
    bool oneGameMode;
@@ -57,6 +58,9 @@ public class MiniGameMgr : MonoBehaviour {
    MiniGame currentMinigame;
 
    bool lastGameWon = true;
+
+   public GameObject startBackground;
+   public GameObject ggjSplash;
 
    public bool cantLose;
 
@@ -86,13 +90,29 @@ public class MiniGameMgr : MonoBehaviour {
       loadingDoors.OnDoorsOpened += Instance_OnDoorsOpened;
       loadingDoors.OnDoorsClosed += Instance_OnDoorsClosed;
 
+      StartCoroutine(ShowSplash());
+   }
+
+   IEnumerator ShowSplash()
+   {
+      ggjSplash.SetActive(true);
+      yield return new WaitForSeconds(2);
+      ggjSplash.SetActive(false);
+      StartCoroutine(WaitForStart());
+   }
+
+   IEnumerator WaitForStart()
+   {
+      HUDMgr.Instance.ShowStart(true);
+      while (!OneButtonInputMgr.Instance.GetButtonPressed())
+         yield return new WaitForEndOfFrame();
+      HUDMgr.Instance.ShowStart(false);
       currentMinigameIndex = -1;
       ChooseMinigame();
-      lastGameUnloaded = true;
       SetSpeed(miniGames[(int)currentLifeStage].speedStart);
+      lastGameUnloaded = true;
       LoadingMgr.Instance.LoadScene(currentMinigameName);
-      StartCoroutine(MiniGameBridge());
-      HUDMgr.Instance.message.text = "Get Ready!";
+      loadingDoors.CloseDoors();
    }
 
    void LoadMinigameConfig()
@@ -179,6 +199,7 @@ public class MiniGameMgr : MonoBehaviour {
 
    void Instance_OnDoorsClosed()
    {
+      HUDMgr.Instance.Init();
       lastGameUnloaded = false;
       nextGameLoaded = false;
       betweenSequenceFinished = false;
@@ -189,7 +210,7 @@ public class MiniGameMgr : MonoBehaviour {
          LoadingMgr.Instance.UnloadScene(currentMinigame);
          return;
       }
-      if (newStage)
+      if (newStage && !justStarted)
       {
          StartCoroutine(BetweenStageBridge(currentMinigame.GetLivedLine()));
       }
@@ -200,6 +221,12 @@ public class MiniGameMgr : MonoBehaviour {
       else
          lastGameUnloaded = true;
          LoadingMgr.Instance.LoadScene(currentMinigameName);
+
+      if (justStarted)
+      {
+         justStarted = false;
+         startBackground.SetActive(false);
+      }
    }
 
    IEnumerator BetweenStageBridge(string livedLine)

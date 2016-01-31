@@ -13,7 +13,7 @@ public class LoadingDoors : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
       anim = GetComponent<Animator>();
-      anim.Play("Close", 0, 1);
+      anim.Play("Open", 0, 1);
 	}
 	
 	public void OpenDoors (bool slow = false) 
