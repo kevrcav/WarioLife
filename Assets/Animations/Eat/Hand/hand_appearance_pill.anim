@@ -48,7 +48,7 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: f081069e53dd2427180882678c4a532b, type: 3}
+      value: {fileID: 21300000, guid: 4801ca566eac94d9e9d6fdba01ad36cd, type: 3}
     attribute: m_Sprite
     path: Spoon/Cheerios
     classID: 212
@@ -87,7 +87,7 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 791c0fec8f8d14146b1819bd7d80db20, type: 3}
     - {fileID: 0}
-    - {fileID: 21300000, guid: f081069e53dd2427180882678c4a532b, type: 3}
+    - {fileID: 21300000, guid: 4801ca566eac94d9e9d6fdba01ad36cd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

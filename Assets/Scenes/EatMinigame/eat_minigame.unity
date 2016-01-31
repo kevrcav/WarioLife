@@ -252,7 +252,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441452, guid: e2963ae6026a74d41a36ef664aed690c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.6203
+      value: -2.54
       objectReference: {fileID: 0}
     - target: {fileID: 441452, guid: e2963ae6026a74d41a36ef664aed690c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -268,11 +268,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 441452, guid: e2963ae6026a74d41a36ef664aed690c, type: 2}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.14284217
       objectReference: {fileID: 0}
     - target: {fileID: 441452, guid: e2963ae6026a74d41a36ef664aed690c, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9897455
       objectReference: {fileID: 0}
     - target: {fileID: 441452, guid: e2963ae6026a74d41a36ef664aed690c, type: 2}
       propertyPath: m_RootOrder
@@ -405,11 +405,12 @@ MonoBehaviour:
   happinessReward: 0.25
   happinessPenalty: 0.3
   winOnTimeOut: 0
-  instruction: I ate some things.
+  instruction: I ate things.
   completeLines:
   - Yum!
   failLines:
   - Waaah!
+  tombLine: 
 --- !u!4 &812178015
 Transform:
   m_ObjectHideFlags: 0
