@@ -62,6 +62,8 @@ public class MiniGameMgr : MonoBehaviour {
    public GameObject startBackground;
    public GameObject ggjSplash;
 
+   public GameObject credits;
+
    public bool cantLose;
 
    void Awake()
@@ -89,6 +91,7 @@ public class MiniGameMgr : MonoBehaviour {
       LoadingMgr.Instance.OnFinalSceneLoaded += Instance_OnFinalSceneLoaded;
       loadingDoors.OnDoorsOpened += Instance_OnDoorsOpened;
       loadingDoors.OnDoorsClosed += Instance_OnDoorsClosed;
+      OneButtonInputMgr.Instance.OnCreditsDown += Instance_OnCreditsDown;
 
       StartCoroutine(ShowSplash());
    }
@@ -105,7 +108,10 @@ public class MiniGameMgr : MonoBehaviour {
    {
       HUDMgr.Instance.ShowStart(true);
       while (!OneButtonInputMgr.Instance.GetButtonPressed())
+      {
          yield return new WaitForEndOfFrame();
+      }
+         
       HUDMgr.Instance.ShowStart(false);
       currentMinigameIndex = -1;
       ChooseMinigame();
@@ -226,7 +232,14 @@ public class MiniGameMgr : MonoBehaviour {
       {
          justStarted = false;
          startBackground.SetActive(false);
+         credits.SetActive(false);
       }
+   }
+
+   void Instance_OnCreditsDown()
+   {
+      if (justStarted)
+         credits.SetActive(!credits.activeInHierarchy);
    }
 
    IEnumerator BetweenStageBridge(string livedLine)

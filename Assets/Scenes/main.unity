@@ -312,7 +312,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: PRESS SPACE TO LIVE
+  m_Text: "PRESS SPACE TO LIVE\n\n   PRESS C TO PAY \n  RESPECTS"
 --- !u!222 &223877145
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -334,7 +334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &231031888
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -360,7 +360,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: eb73d8db5ebe1f945ac2d93471bd7487, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -447,6 +447,7 @@ MonoBehaviour:
   speedUpFrequency: 5
   startBackground: {fileID: 1499987657}
   ggjSplash: {fileID: 231031887}
+  credits: {fileID: 2090430263}
   cantLose: 0
 --- !u!4 &279779373
 Transform:
@@ -508,6 +509,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: c9706fa4d8129b84cbc20a3c46f44f5a, type: 3}
   - {fileID: 8300000, guid: 2bef6912777e0f841b0e68299cf7216d, type: 3}
   - {fileID: 8300000, guid: 3bab75c6fb0780e4dbe740e6ecdaadd7, type: 3}
+  - {fileID: 8300000, guid: 1c92844bf4d80bd49bb05f36958f0a6f, type: 3}
+  - {fileID: 8300000, guid: b467b475b436a9346953fe6e2bc310b8, type: 3}
+  - {fileID: 8300000, guid: a11edefd5ef40454b90e7763181f9422, type: 3}
+  - {fileID: 8300000, guid: c51a4304d95fcc549b174342a5dc3094, type: 3}
+  - {fileID: 8300000, guid: 82afe6df9b86af94aa8ef3345ef722b8, type: 3}
+  - {fileID: 8300000, guid: 5478eb082257b5f43b447b52c9bb88f2, type: 3}
+  - {fileID: 8300000, guid: 2c6764517c1875942869272c2b7cbdc2, type: 3}
+  - {fileID: 8300000, guid: 8b0f69b4631b7ef49a773f009c4b9559, type: 3}
   source: {fileID: 1049740748}
 --- !u!1 &517928086
 GameObject:
@@ -1980,8 +1989,66 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1499987657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.11, y: 0.72, z: 0}
+  m_LocalPosition: {x: -2.1, y: 0.75, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
+--- !u!1 &2090430263
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2090430265}
+  - 212: {fileID: 2090430264}
+  m_Layer: 0
+  m_Name: Credits
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!212 &2090430264
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2090430263}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 277834374cd3e524a997ddafa1033b14, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!4 &2090430265
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2090430263}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.1, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7

@@ -10,7 +10,15 @@ public enum SoundEffectType
    kChewingCrunch,
    kChewingSoft,
    kDrinking,
-   kVomit
+   kVomit,
+   kCarAccelFact,
+   kCarAccelSlow,
+   kHitByCar,
+   kPunch,
+   kSlap,
+   kTireSqual,
+   kWhoosh,
+   kZap
 }
 
 public class AudioMgr : MonoBehaviour {

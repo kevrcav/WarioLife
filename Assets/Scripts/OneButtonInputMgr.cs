@@ -8,6 +8,7 @@ public class OneButtonInputMgr : MonoBehaviour {
    public delegate void ButtonHandler();
    public ButtonHandler OnButtonDown;
    public ButtonHandler OnButtonUp;
+   public ButtonHandler OnCreditsDown;
 
    float timePressed;
    bool buttonDown;
@@ -26,6 +27,8 @@ public class OneButtonInputMgr : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+      if (Input.GetKeyUp(KeyCode.Escape)) Application.Quit();
+
       if (ignoreInput)
          return;
 
@@ -42,6 +45,14 @@ public class OneButtonInputMgr : MonoBehaviour {
          timePressed = 0;
          if (OnButtonUp != null)
             OnButtonUp();
+      }
+
+      if (Input.GetButtonDown("Credits"))
+      {
+         if (OnCreditsDown != null)
+         {
+            OnCreditsDown();
+         }
       }
 
       if (buttonDown)
