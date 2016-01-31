@@ -22,6 +22,8 @@ public class FriendMinigame : MonoBehaviour {
         playerAnimator.SetInteger("iter", curr_iter);
         friendAnimator.SetInteger("stage", curr_stage);
         friendAnimator.SetInteger("iter", curr_iter);
+        playerAnimator.SetTrigger("go");
+        friendAnimator.SetTrigger("go");
         gift.sprite = spritelist[(curr_stage * 3) + curr_iter];
 
         resultsRunning = false;
@@ -82,7 +84,7 @@ public class FriendMinigame : MonoBehaviour {
         playerAnimator.SetTrigger("ActionGood");
         yield return new WaitForSeconds(endDelay);
         friendAnimator.SetTrigger("ReactGood");
-        MiniGame.Instance.ReportWin();
+        MiniGame.Instance.ReportWin(1.5f);
     }
 
     IEnumerator BadEnding()
@@ -90,6 +92,6 @@ public class FriendMinigame : MonoBehaviour {
         playerAnimator.SetTrigger("ActionBad");
         yield return new WaitForSeconds(endDelay);
         friendAnimator.SetTrigger("ReactBad");
-        MiniGame.Instance.ReportLose();
+        MiniGame.Instance.ReportLose(1.5f);
     }
 }
