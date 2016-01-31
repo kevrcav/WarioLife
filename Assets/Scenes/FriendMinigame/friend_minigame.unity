@@ -696,6 +696,7 @@ GameObject:
   - 4: {fileID: 1559173243}
   - 114: {fileID: 1559173242}
   - 114: {fileID: 1559173244}
+  - 114: {fileID: 1559173245}
   m_Layer: 0
   m_Name: friend_minigame
   m_TagString: Untagged
@@ -718,11 +719,13 @@ MonoBehaviour:
   happinessReward: 0.1
   happinessPenalty: 0.25
   winOnTimeOut: 0
-  instruction: I wanted to make them happy
+  instruction: 
   completeLines:
-  - So I did.
+  - 
   failLines:
-  - I'm so sorry...
+  - 
+  tombLine: 
+  livedLine: 
 --- !u!4 &1559173243
 Transform:
   m_ObjectHideFlags: 0
@@ -730,9 +733,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1559173241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.20437318, y: -0.69321394, z: -10}
+  m_LocalPosition: {x: -0.20437318, y: -0.69321394, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1726268389}
   - {fileID: 2007780510}
   - {fileID: 1889669820}
   m_Father: {fileID: 0}
@@ -772,6 +776,54 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 606f0bd83221c4e74abfde8ef07df061, type: 3}
   - {fileID: 21300000, guid: 15382f066a38106469aba357961c177b, type: 3}
   gift: {fileID: 1013469149}
+--- !u!114 &1559173245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1559173241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ded74de663ba144d9a5349fa56ea93b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instructions:
+  - I wanted you to notice me.
+  - I wanted to make you smile.
+  - I'd try to be funny.
+  - I'd try to share.
+  - We shared a vice or two.
+  - I hoped you noticed.
+  - I wanted to make you happy.
+  - I hoped you wanted the same.
+  - I'm so sorry...
+  - I wish you were here.
+  epitaphs:
+  - ALONE
+  - ALONE
+  - ALONE
+  - ALONE
+  - ALONE
+  - ALONE
+  - ALONE
+  - ALONE
+  - ALONE
+  - ALONE
+  livedLines:
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  - Hopeful
+  curr_stage: 0
+  curr_iter: 0
+  max_inters_per_age: 2
+  minigameName: friend_minigame
 --- !u!1 &1726268387
 GameObject:
   m_ObjectHideFlags: 0
@@ -825,11 +877,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1726268387}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.20437318, y: 0.69321394, z: 21}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1559173243}
+  m_RootOrder: 0
 --- !u!1 &1779510939
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +980,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1889669818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: -1.8067861, z: 10}
+  m_LocalPosition: {x: 3.5, y: -1.8067861, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2142262522}
@@ -938,7 +990,7 @@ Transform:
   - {fileID: 805199716}
   - {fileID: 1945042746}
   m_Father: {fileID: 1559173243}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!1 &1945042745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1095,7 +1147,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007780508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -1.8067861, z: 10}
+  m_LocalPosition: {x: -3.5, y: -1.8067861, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 393983762}
@@ -1105,7 +1157,7 @@ Transform:
   - {fileID: 1371994968}
   - {fileID: 580274871}
   m_Father: {fileID: 1559173243}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!1 &2142262521
 GameObject:
   m_ObjectHideFlags: 0

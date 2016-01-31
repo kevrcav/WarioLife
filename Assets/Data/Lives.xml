@@ -116,11 +116,11 @@
 	        <eat_minigame />
  	        <friend_minigame />
           <increment />
-          	<eat_minigame />
-          	<danger_minigame />
+          <eat_minigame />
+          <friend_minigame />
           <increment />
-          	<eat_minigame />
-          	<friend_minigame />
+          <eat_minigame />
+          <danger_minigame />
 
 	      </Minigames>
 	   </Baby>
@@ -134,11 +134,11 @@
           	<eat_minigame />
           	<friend_minigame />
           <increment />
-          	<eat_minigame />
-          	<danger_minigame />
+          <eat_minigame />
+          <friend_minigame />
           <increment />
-          	<eat_minigame />
-          	<friend_minigame />
+          <eat_minigame />
+          <danger_minigame />
 	      </Minigames>
 	   </Youth>
 	   <Hipster>
@@ -151,11 +151,11 @@
           	<eat_minigame />
           	<friend_minigame />
           <increment />
-          	<eat_minigame />
-          	<danger_minigame />
+          <eat_minigame />
+          <friend_minigame />
           <increment />
-          	<eat_minigame />
-          	<friend_minigame />
+          <eat_minigame />
+          <danger_minigame />
 	      </Minigames>
 	   </Hipster>
 	   <Grownup>
@@ -168,10 +168,10 @@
           	<eat_minigame />
           	<friend_minigame />
           <increment />
-          	<eat_minigame />
+          <eat_minigame />
           <friend_minigame />
           <increment />
-          	<eat_minigame />
+          <eat_minigame />
           <danger_minigame />
 	      </Minigames>
 	   </Grownup>
@@ -190,6 +190,7 @@
           <increment />
           	<eat_minigame />
           	<friend_minigame />
+          <outro />
 	      </Minigames>
 	   </Decrepit>
 	</GameFlow>
