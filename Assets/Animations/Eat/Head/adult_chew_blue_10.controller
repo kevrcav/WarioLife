@@ -27,7 +27,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: adult_open_wide
+  m_Name: adult_openclose_wide
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -39,7 +39,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 0561b718d72ea415d832666b41371826, type: 2}
+  m_Motion: {fileID: 7400000, guid: 756ddcda84c654aa8a16e2436d12cbf4, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
