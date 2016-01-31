@@ -64,8 +64,8 @@ public class EatGame : MonoBehaviour {
     {
         // set anim parameters
         int curr_stage = (int)(MiniGameMgr.Instance.GetLifeStage());
-        int curr_iter = MiniGameMgr.Instance.GetRepeatTime();
-        Debug.Log("stage | iter = " + curr_stage.ToString() + " | " + curr_iter.ToString());
+        int curr_iter = MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame");
+        //Debug.Log("stage | iter = " + curr_stage.ToString() + " | " + curr_iter.ToString());
         bodyAnim.SetInteger("stage", curr_stage);
         bodyAnim.SetInteger("iter", curr_iter);
         handAnim.SetInteger("stage", curr_stage);
@@ -93,7 +93,7 @@ public class EatGame : MonoBehaviour {
         float head_y = headAnim.transform.position.y + headYOffset;
         float y_delta = anchor_y - head_y;
 
-        Debug.Log("Delta is " + y_delta.ToString());
+        //Debug.Log("Delta is " + y_delta.ToString());
 
         if (y_delta < 0 - anchorToHeadMaxDelta)
         {

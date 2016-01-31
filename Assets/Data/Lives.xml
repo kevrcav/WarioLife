@@ -66,7 +66,7 @@
 	   <Youth>
 	      <Speeds>
 	         <Start>1.2</Start>
-	         <End>2</End>
+	         <End>1.8</End>
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
@@ -75,8 +75,8 @@
 	   </Youth>
 	   <Hipster>
 	      <Speeds>
-	         <Start>1.5</Start>
-	         <End>3</End>
+	         <Start>1.4</Start>
+	         <End>2.2</End>
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
@@ -127,7 +127,7 @@
 	   <Youth>
 	      <Speeds>
 	         <Start>1.25</Start>
-	         <End>2.25</End>
+	         <End>1.8</End>
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
@@ -144,7 +144,7 @@
 	   <Hipster>
 	      <Speeds>
 	         <Start>1.5</Start>
-	         <End>3</End>
+	         <End>2</End>
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
@@ -160,8 +160,8 @@
 	   </Hipster>
 	   <Grownup>
 	      <Speeds>
-	         <Start>2.5</Start>
-	         <End>4</End>
+	         <Start>1.5</Start>
+	         <End>3</End>
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>
@@ -178,7 +178,7 @@
 	   <Decrepit>
 	      <Speeds>
 	         <Start>1</Start>
-	         <End>1.2</End>
+	         <End>0.4</End>
 	      </Speeds>
 	      <Repeats>2</Repeats>
 	      <Minigames>

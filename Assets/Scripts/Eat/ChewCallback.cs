@@ -23,11 +23,11 @@ public class ChewCallback : MonoBehaviour {
     public void OnFoodEaten()
     {
         Debug.Log("Food is done!");
-        if (mgmgr.GetLifeStage() == Stage.kBaby && mgmgr.GetRepeatTime() == 2)
+        if (mgmgr.GetLifeStage() == Stage.kBaby && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 2)
             cheerioParticles.Play();
-        else if (mgmgr.GetLifeStage() == Stage.kYouth && mgmgr.GetRepeatTime() == 2)
+        else if (mgmgr.GetLifeStage() == Stage.kYouth && MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame") == 2)
         {
-            Debug.Log("Launching guitar!");
+            Debug.Log("Launching hotdogs!");
             hotdogParticles.Play();
         }
     }

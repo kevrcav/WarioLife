@@ -434,9 +434,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 0
   minAnimSpeed: 1
-  maxAnimSpeed: 3
+  maxAnimSpeed: 1.2
   maxTime: 10
-  minTime: 5
+  minTime: 10
   anchorAnim: {fileID: 1923907333}
   handAnim: {fileID: 556662047}
   headAnim: {fileID: 1996644000}
