@@ -9,6 +9,9 @@ public class LoadingMgr : MonoBehaviour {
    public delegate void GameLoadedHandler(MiniGame game);
    public GameLoadedHandler OnSceneLoaded;
 
+   public delegate void FinalSceneLoadedHandler(TombstoneText tombstone);
+   public FinalSceneLoadedHandler OnFinalSceneLoaded;
+
    public delegate void GameUnloadedHandler(string game);
    public GameUnloadedHandler OnSceneUnloaded;
    
@@ -45,5 +48,22 @@ public class LoadingMgr : MonoBehaviour {
    {
       yield return new WaitForEndOfFrame();
       SceneManager.UnloadScene(scene);
+   }
+
+   public void LoadFinalScene()
+   {
+      StartCoroutine(LoadFinalSceneCoroutine());
+   }
+
+   IEnumerator LoadFinalSceneCoroutine()
+   {
+      yield return SceneManager.LoadSceneAsync("dead_minigame", LoadSceneMode.Additive);
+      if (OnFinalSceneLoaded != null)
+         OnFinalSceneLoaded(FindObjectOfType<TombstoneText>());
+   }
+
+   public static void Reload()
+   {
+      SceneManager.LoadScene("main");
    }
 }
