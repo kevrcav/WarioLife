@@ -11,14 +11,23 @@ public class OneButtonInputMgr : MonoBehaviour {
 
    float timePressed;
    bool buttonDown;
+   bool ignoreInput;
 
    void Awake ()
    {
       Instance = this;
    }
 	
+   public void SetIgnoreInput(bool b)
+   {
+      ignoreInput = b;
+   }
+
 	// Update is called once per frame
 	void Update () {
+
+      if (ignoreInput)
+         return;
 
       if (Input.GetButtonDown("OneButton"))
       {
@@ -45,8 +54,9 @@ public class OneButtonInputMgr : MonoBehaviour {
       return timePressed;
    }
 
-   public bool GetButtonPressed()
+   public bool GetButtonPressed(bool force = false)
    {
+      if (!force && ignoreInput) return false;
       return buttonDown;
    }
 }

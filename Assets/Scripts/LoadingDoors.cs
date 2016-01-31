@@ -16,13 +16,13 @@ public class LoadingDoors : MonoBehaviour {
       anim.Play("Close", 0, 1);
 	}
 	
-	public void OpenDoors () 
+	public void OpenDoors (bool slow = false) 
    {
-       anim.Play("Open");
+       anim.Play(slow ? "SlowOpen" : "Open");
 	}
-   public void CloseDoors()
+   public void CloseDoors(bool slow = false)
    {
-       anim.Play("Close");
+      anim.Play(slow ? "SlowClose" : "Close");
    }
 
    public void DoorsOpened()
