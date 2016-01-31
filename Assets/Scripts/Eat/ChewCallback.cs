@@ -39,16 +39,31 @@ public class ChewCallback : MonoBehaviour {
             Debug.Log("Launching puke!");
             beerParticles.Play();
         }
-        else if (curr_stage == Stage.kDecrepit && curr_iter == 2)
-        {
-            Debug.Log("Launching puke!");
-            beerParticles.Stop();
-            beerParticles.Play();
-        }
+//        else if (curr_stage == Stage.kDecrepit && curr_iter == 2)
+//        {
+//            Debug.Log("Launching puke!");
+//            beerParticles.Stop();
+//            beerParticles.Play();
+//        }
 
 
     }
+
     public void OnStartSound()
+    {
+        Stage curr_stage = MiniGameMgr.Instance.GetLifeStage();
+        int curr_iter = MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame");
+
+        if (curr_stage == Stage.kBaby)
+        {
+            if (curr_iter == 2)
+                AudioMgr.Instance.PlaySFX(SoundEffectType.kBabyCoo);
+            else
+                AudioMgr.Instance.PlaySFX(SoundEffectType.kBabyLaugh);
+        }
+    }
+
+    public void OnChewStartSound()
     {
         Stage curr_stage = MiniGameMgr.Instance.GetLifeStage();
         int curr_iter = MiniGameMgr.Instance.GetMinigameRepeats("eat_minigame");
@@ -72,5 +87,10 @@ public class ChewCallback : MonoBehaviour {
         }
         else
             AudioMgr.Instance.PlaySFX(SoundEffectType.kChewingCrunch);
+    }
+
+    public void OnFailSound()
+    {
+        AudioMgr.Instance.PlaySFX(SoundEffectType.kSadEnd);
     }
 }

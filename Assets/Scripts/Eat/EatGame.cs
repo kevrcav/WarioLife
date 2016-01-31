@@ -15,6 +15,8 @@ public class EatGame : MonoBehaviour {
     public Animator handAnim;
     public Animator headAnim;
     public Animator bodyAnim;
+    public ChewCallback chewCallBack;
+
     public float anchorToHeadMaxDelta = 1.5f;
     public float headYOffset = -0.5f;
 
@@ -113,6 +115,8 @@ public class EatGame : MonoBehaviour {
             anchorToHeadMaxDelta = 2.5f;
             break;
         }
+
+        chewCallBack.OnStartSound();
     }
         
     float GetNormalYDelta()

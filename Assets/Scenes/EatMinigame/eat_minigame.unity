@@ -338,10 +338,10 @@ MonoBehaviour:
   winOnTimeOut: 0
   instruction: I ate things.
   completeLines:
-  - Yum!
+  - 
   failLines:
-  - Waaah!
-  tombLine: 
+  - 
+  tombLine: STARVING
   livedLine: 
 --- !u!4 &812178015
 Transform:
@@ -379,6 +379,7 @@ MonoBehaviour:
   handAnim: {fileID: 556662047}
   headAnim: {fileID: 1996644000}
   bodyAnim: {fileID: 145020379}
+  chewCallBack: {fileID: 556662048}
   anchorToHeadMaxDelta: 1.8
   headYOffset: -0.25
   debugSprite: {fileID: 2033808851}
