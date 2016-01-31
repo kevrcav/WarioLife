@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: hand_appearance_pbr
+  m_Name: hand_appearance_sushi
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -48,7 +48,7 @@ AnimationClip:
     script: {fileID: 0}
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: cc28eed5b352a4d17840de12add3c628, type: 3}
+      value: {fileID: 21300000, guid: 05120b513b883404a930e7c733b8fffd, type: 3}
     attribute: m_Sprite
     path: Spoon/Cheerios
     classID: 212
@@ -87,7 +87,7 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 791c0fec8f8d14146b1819bd7d80db20, type: 3}
     - {fileID: 0}
-    - {fileID: 21300000, guid: cc28eed5b352a4d17840de12add3c628, type: 3}
+    - {fileID: 21300000, guid: 05120b513b883404a930e7c733b8fffd, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

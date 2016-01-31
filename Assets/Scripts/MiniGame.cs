@@ -12,7 +12,7 @@ public class MiniGame : MonoBehaviour {
    public bool winOnTimeOut;
 
    float currentTime;
-   bool playing = true;
+   bool playing = false;
    bool won = false;
    bool useSpecificLine;
    int specificLine;
@@ -84,16 +84,20 @@ public class MiniGame : MonoBehaviour {
    public void StartGame()
    {
       currentTime = gameTime;
-      playing = true;
       gameObject.SetActive(true);
+   }
+
+   public void StartTimer()
+   {
+      playing = true;
    }
 
    void Update()
    {
+      HUDMgr.Instance.SetTimeRemaining(currentTime / gameTime);
       if (playing)
       {
          currentTime -= Time.deltaTime;
-         HUDMgr.Instance.SetTimeRemaining(currentTime / gameTime);
          if (currentTime <= 0)
          {
             if (winOnTimeOut)

@@ -41,6 +41,7 @@ public class MiniGameMgr : MonoBehaviour {
    Dictionary<string, LifeStage[]> minigameSets;
    Dictionary<string, int> currentMinigameIterations;
    int currentIncrements;
+   bool newStage = true;
 
    bool oneGameMode;
 
@@ -54,6 +55,8 @@ public class MiniGameMgr : MonoBehaviour {
    MiniGame currentMinigame;
 
    bool lastGameWon = true;
+
+   public bool cantLose;
 
    void Awake()
    {
@@ -158,7 +161,8 @@ public class MiniGameMgr : MonoBehaviour {
    
    void Instance_OnDoorsOpened()
    {
-       HUDMgr.Instance.SetTimerOn(true);
+      OneButtonInputMgr.Instance.SetIgnoreInput(false);
+      currentMinigame.StartTimer();
    }
 
    void Instance_OnDoorsClosed()
@@ -166,13 +170,31 @@ public class MiniGameMgr : MonoBehaviour {
       lastGameUnloaded = false;
       nextGameLoaded = false;
       betweenSequenceFinished = false;
-      StartCoroutine(MiniGameBridge());
+      if (newStage)
+         StartCoroutine(BetweenStageBridge());
+      else
+         StartCoroutine(MiniGameBridge());
       if (currentMinigame != null)
          LoadingMgr.Instance.UnloadScene(currentMinigame);
       else
          lastGameUnloaded = true;
-      ChooseMinigame();
       LoadingMgr.Instance.LoadScene(currentMinigameName);
+   }
+
+   IEnumerator BetweenStageBridge()
+   {
+      string completeLine = "YOU LIVED: ";
+      HUDMgr.Instance.StartBridgeSequence(completeLine);
+      yield return new WaitForSeconds(2);
+      HUDMgr.Instance.ShowContinue(true);
+      while (!OneButtonInputMgr.Instance.GetButtonPressed(true))
+      {
+         yield return new WaitForEndOfFrame();
+      }
+      HUDMgr.Instance.ShowContinue(false);
+      HUDMgr.Instance.EndBridgeSequence(currentMinigame.GetInstruction());
+      betweenSequenceFinished = true;
+      StartMinigameIfReady();
    }
 
    IEnumerator MiniGameBridge()
@@ -201,8 +223,10 @@ public class MiniGameMgr : MonoBehaviour {
    {
       if (lastGameUnloaded && nextGameLoaded && betweenSequenceFinished)
       {
-         loadingDoors.OpenDoors();
+         loadingDoors.OpenDoors(newStage);
+         newStage = false;
          currentMinigame.StartGame();
+         OneButtonInputMgr.Instance.SetIgnoreInput(true);
       }
    }
 
@@ -248,6 +272,7 @@ public class MiniGameMgr : MonoBehaviour {
 
    void NewStage()
    {
+      newStage = true;
       currentSpeed = miniGames[(int)currentLifeStage].speedStart;
       currentIncrements = 0;
       currentMinigameIterations.Clear();
@@ -257,9 +282,9 @@ public class MiniGameMgr : MonoBehaviour {
    public void Report(bool won)
    {
       lastGameWon = won;
-      loadingDoors.CloseDoors();
-      HUDMgr.Instance.SetTimerOn(false);
-      if (happiness <= 0)
+      ChooseMinigame();
+      loadingDoors.CloseDoors(newStage);
+      if (!cantLose && happiness <= 0)
          GameOver();
    }
 
