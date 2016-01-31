@@ -17,6 +17,12 @@ public class EatGame : MonoBehaviour {
     public Animator bodyAnim;
     public float anchorToHeadMaxDelta = 1.5f;
     public float headYOffset = -0.5f;
+
+    // debug sprite colors
+    private Color onColor = new Color(.5f,1,.5f,0.5f);
+    private Color offColor = new Color(1,1,1,0.0f);
+        
+    public SpriteRenderer debugSprite;
     MiniGame miniGame;
 
 	// Use this for initialization
@@ -44,14 +50,12 @@ public class EatGame : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.anyKeyDown)
+        if (debugSprite != null && !hasActed)
         {
-//            if (!hasActed)
-//                ResolveAction();
-//            else
-//                ResetAction();
-        }
-	
+            float yDelta = GetNormalYDelta();
+            //Debug.Log("yDelta is " + yDelta.ToString());
+            debugSprite.color = (Mathf.Abs(yDelta) > 1) ? offColor : onColor;
+        }	
 	}
 
     void OnButtonDown()
@@ -84,8 +88,41 @@ public class EatGame : MonoBehaviour {
 
         float duration = Mathf.Lerp(maxTime, minTime, difficulty);
         miniGame.SetTime(duration);
-    }
 
+        // adjust cases
+        switch (MiniGameMgr.Instance.GetLifeStage())
+        {
+        case Stage.kBaby:
+            headYOffset = -0.25f;
+            anchorToHeadMaxDelta = 1.8f;
+            break;
+        case Stage.kYouth:
+            headYOffset = -0.25f;
+            anchorToHeadMaxDelta = 1.8f;
+            break;
+        case Stage.kHipster:
+            headYOffset = -0.75f;
+            anchorToHeadMaxDelta = 2.2f;
+            break;
+        case Stage.kGrownUp:
+            headYOffset = -0.25f;
+            anchorToHeadMaxDelta = 2.2f;
+            break;
+        case Stage.kDecrepit:
+            headYOffset = -0.25f;
+            anchorToHeadMaxDelta = 2.2f;
+            break;
+        }
+    }
+        
+    float GetNormalYDelta()
+    {
+        float anchor_y = anchorAnim.transform.position.y;
+        float head_y = headAnim.transform.position.y + headYOffset;
+        float y_delta = (anchor_y - head_y) / anchorToHeadMaxDelta;
+        return y_delta;
+
+    }
     void ResolveAction()
     {
         //Debug.Log("WOO LET'S RESOLVE THIS ACTION");
