@@ -21,6 +21,8 @@ public class MiniGame : MonoBehaviour {
    public string[] completeLines;
    public string[] failLines;
 
+   public string tombLine;
+
    public static MiniGame Instance;
 
    void Awake()
@@ -121,5 +123,15 @@ public class MiniGame : MonoBehaviour {
    public string GetInstruction()
    {
       return instruction;
+   }
+
+   public string GetTombLine()
+   {
+      return tombLine;
+   }
+
+   public void SetTombLine(string line)
+   {
+      tombLine = line;
    }
 }

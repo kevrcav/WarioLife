@@ -169,10 +169,10 @@
           	<friend_minigame />
           <increment />
           	<eat_minigame />
-          	<danger_minigame />
+          <friend_minigame />
           <increment />
           	<eat_minigame />
-          	<friend_minigame />
+          <danger_minigame />
 	      </Minigames>
 	   </Grownup>
 	   <Decrepit>

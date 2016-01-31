@@ -42,6 +42,8 @@ public class MiniGameMgr : MonoBehaviour {
    Dictionary<string, int> currentMinigameIterations;
    int currentIncrements;
    bool newStage = true;
+   bool gameOver;
+   string tombstoneText;
 
    bool oneGameMode;
 
@@ -80,12 +82,14 @@ public class MiniGameMgr : MonoBehaviour {
       }
       LoadingMgr.Instance.OnSceneLoaded += Instance_OnSceneLoaded;
       LoadingMgr.Instance.OnSceneUnloaded += Instance_OnSceneUnloaded;
+      LoadingMgr.Instance.OnFinalSceneLoaded += Instance_OnFinalSceneLoaded;
       loadingDoors.OnDoorsOpened += Instance_OnDoorsOpened;
       loadingDoors.OnDoorsClosed += Instance_OnDoorsClosed;
 
       currentMinigameIndex = -1;
       ChooseMinigame();
       lastGameUnloaded = true;
+      SetSpeed(miniGames[(int)currentLifeStage].speedStart);
       LoadingMgr.Instance.LoadScene(currentMinigameName);
       StartCoroutine(MiniGameBridge());
       HUDMgr.Instance.message.text = "Get Ready!";
@@ -158,6 +162,14 @@ public class MiniGameMgr : MonoBehaviour {
       lastGameUnloaded = true;
       StartMinigameIfReady();
    }
+
+   void Instance_OnFinalSceneLoaded(TombstoneText tombstone)
+   {
+      loadingDoors.OpenDoors(true);
+      tombstone.SetTombText(tombstoneText);
+      HUDMgr.Instance.DisplayYouDiedText();
+      StartCoroutine(WaitForReset());
+   }
    
    void Instance_OnDoorsOpened()
    {
@@ -170,6 +182,13 @@ public class MiniGameMgr : MonoBehaviour {
       lastGameUnloaded = false;
       nextGameLoaded = false;
       betweenSequenceFinished = false;
+      if (gameOver)
+      {
+         LoadingMgr.Instance.LoadFinalScene();
+         GameOverBridge();
+         LoadingMgr.Instance.UnloadScene(currentMinigame);
+         return;
+      }
       if (newStage)
          StartCoroutine(BetweenStageBridge());
       else
@@ -178,7 +197,7 @@ public class MiniGameMgr : MonoBehaviour {
          LoadingMgr.Instance.UnloadScene(currentMinigame);
       else
          lastGameUnloaded = true;
-      LoadingMgr.Instance.LoadScene(currentMinigameName);
+         LoadingMgr.Instance.LoadScene(currentMinigameName);
    }
 
    IEnumerator BetweenStageBridge()
@@ -199,7 +218,8 @@ public class MiniGameMgr : MonoBehaviour {
 
    IEnumerator MiniGameBridge()
    {
-      string completeLine = ""; 
+      string completeLine = "";
+      
       if (currentMinigame != null)
          completeLine = currentMinigame.GetCompleteLine();
       if (completeLine == "")
@@ -209,6 +229,12 @@ public class MiniGameMgr : MonoBehaviour {
       HUDMgr.Instance.EndBridgeSequence(currentMinigame.GetInstruction());
       betweenSequenceFinished = true;
       StartMinigameIfReady();
+   }
+
+   void GameOverBridge()
+   {
+      HUDMgr.Instance.StartBridgeSequence("...");
+      betweenSequenceFinished = true;
    }
 
    string GetDefaultCompleteLine()
@@ -255,7 +281,12 @@ public class MiniGameMgr : MonoBehaviour {
       }
 
       currentMinigameIndex = -1;
-      currentLifeStage = (Stage)(((int)currentLifeStage + 1) % miniGames.Length);
+      currentLifeStage = (Stage)((int)currentLifeStage + 1);
+      if (currentLifeStage > Stage.kDecrepit)
+      {
+         GameOver();
+         return;
+      }
       NewStage();
       
       ChooseMinigame();
@@ -283,9 +314,9 @@ public class MiniGameMgr : MonoBehaviour {
    {
       lastGameWon = won;
       ChooseMinigame();
-      loadingDoors.CloseDoors(newStage);
       if (!cantLose && happiness <= 0)
          GameOver();
+      loadingDoors.CloseDoors(newStage || gameOver);
    }
 
    public Stage GetLifeStage()
@@ -325,21 +356,20 @@ public class MiniGameMgr : MonoBehaviour {
 
    void GameOver()
    {
-       HUDMgr.Instance.message.text = "YOU LOSE! PRESS ENTER.";
-       Time.timeScale = 0;
+      tombstoneText = currentMinigame.GetTombLine();
+      gameOver = true;
    }
 
-   void OnGUI()
+   IEnumerator WaitForReset()
    {
-       Restart();
+      while (!OneButtonInputMgr.Instance.GetButtonPressed())
+         yield return new WaitForEndOfFrame();
+      Restart();
+
    }
 
    void Restart()
    {
-       if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Delete) || Input.GetKeyDown(KeyCode.Return))
-       {
-          Time.timeScale = 1;
-          happiness = 1;
-       }
+      LoadingMgr.Reload();
    }
 }
