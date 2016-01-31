@@ -718,9 +718,9 @@ MonoBehaviour:
   happinessReward: 0.1
   happinessPenalty: 0.25
   winOnTimeOut: 0
-  instruction: I want to make them Happy
+  instruction: I wanted to make them happy
   completeLines:
-  - And we smile.
+  - So I did.
   failLines:
   - I'm so sorry...
 --- !u!4 &1559173243
@@ -756,22 +756,80 @@ MonoBehaviour:
   friendAnimator: {fileID: 1889669819}
   endDelay: 0.3
   spritelist:
-  - {fileID: 21300000, guid: dc7717b40d493aa48aee95e672960604, type: 3}
-  - {fileID: 21300000, guid: 8676a03a9247dee41a9820b9b84fcb7b, type: 3}
-  - {fileID: 21300000, guid: dc7717b40d493aa48aee95e672960604, type: 3}
-  - {fileID: 21300000, guid: e813a4ccd342e204cb9a94443564a142, type: 3}
+  - {fileID: 21300000, guid: e8a85262c00ce4455976c2d58ad0df30, type: 3}
+  - {fileID: 21300000, guid: 642ff12b34da443649f394568b433927, type: 3}
+  - {fileID: 21300000, guid: 15382f066a38106469aba357961c177b, type: 3}
   - {fileID: 21300000, guid: c2b1e2366a4b63247870c047179d3403, type: 3}
   - {fileID: 21300000, guid: e813a4ccd342e204cb9a94443564a142, type: 3}
+  - {fileID: 21300000, guid: 15382f066a38106469aba357961c177b, type: 3}
   - {fileID: 21300000, guid: 459175798d482ff4b85ce8dd476d8fa0, type: 3}
+  - {fileID: 21300000, guid: 8aaa810c9c5af1c40a8be0c2e6453f8c, type: 3}
+  - {fileID: 21300000, guid: 15382f066a38106469aba357961c177b, type: 3}
   - {fileID: 21300000, guid: bf309e4c61cf9f445965dcca6a315bff, type: 3}
-  - {fileID: 21300000, guid: 459175798d482ff4b85ce8dd476d8fa0, type: 3}
-  - {fileID: 21300000, guid: f081069e53dd2427180882678c4a532b, type: 3}
-  - {fileID: 21300000, guid: f081069e53dd2427180882678c4a532b, type: 3}
-  - {fileID: 21300000, guid: f081069e53dd2427180882678c4a532b, type: 3}
+  - {fileID: 21300000, guid: 606f0bd83221c4e74abfde8ef07df061, type: 3}
+  - {fileID: 21300000, guid: 15382f066a38106469aba357961c177b, type: 3}
   - {fileID: 21300000, guid: bf309e4c61cf9f445965dcca6a315bff, type: 3}
-  - {fileID: 21300000, guid: bf309e4c61cf9f445965dcca6a315bff, type: 3}
-  - {fileID: 21300000, guid: bf309e4c61cf9f445965dcca6a315bff, type: 3}
+  - {fileID: 21300000, guid: 606f0bd83221c4e74abfde8ef07df061, type: 3}
+  - {fileID: 21300000, guid: 15382f066a38106469aba357961c177b, type: 3}
   gift: {fileID: 1013469149}
+--- !u!1 &1726268387
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1726268389}
+  - 212: {fileID: 1726268388}
+  m_Layer: 0
+  m_Name: Grass_Field
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!212 &1726268388
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1726268387}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_ReflectionProbeUsage: 0
+  m_ProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e378458cb42024c11842e80172bb7bd4, type: 3}
+  m_Color: {r: 0.9117647, g: 0.9117647, b: 0.9117647, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+--- !u!4 &1726268389
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1726268387}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
 --- !u!1 &1779510939
 GameObject:
   m_ObjectHideFlags: 0
